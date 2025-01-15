@@ -1,0 +1,26 @@
+// intro.scss
+@import "./mixin.scss";
+@import "./variable.scss";
+
+.intro {
+  @include flexbox(center, center);
+  flex-direction: column;
+  height: 100vh;
+  background: $black;
+  img {
+    @include box(60px, 60px);
+  }
+  .user-title {
+    display: inline-block;
+    outline: none;
+    background: $black;
+    @include bordered(2px, #fffce1);
+    color: #fffce1;
+    border-radius: 10rem;
+    padding: 1.2rem 2.5rem;
+    text-transform: uppercase;
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+}

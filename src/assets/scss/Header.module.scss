@@ -1,10 +1,10 @@
+// header.scss
+
 @import "./mixin.scss";
 @import "./variable.scss";
 
 .header {
   @include flexbox(center, center);
-  background: $primary;
-  color: #fff;
   height: 60px;
   @include desktop {
     background: #000;

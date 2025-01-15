@@ -1,3 +1,5 @@
+// global.scss
+
 @import "mixin.scss";
 @import "variable.scss";
 
@@ -28,8 +30,15 @@ body {
   -ms-text-size-adjust: none;
   -o-text-size-adjust: none;
 }
+html {
+  /* 62.5% of 16px browser font size is 10px */
+  /* 16px * 0.625 = 10px */
+  font-size: 62.5%;
+}
 body {
-  font-size: 14px;
+  width: 100%;
+  min-height: 100vh;
+  font-size: 1.6rem;
   line-height: 1.5;
   box-sizing: border-box;
 }

@@ -1,11 +1,11 @@
-import logo from "./logo.svg";
+import React from "react";
 import "./assets/scss/global.scss";
-import { Header } from "./components";
+import Router from "./Router";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
+    <div className="app">
+      <Router />
     </div>
   );
 }
