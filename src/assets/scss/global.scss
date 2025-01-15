@@ -1,0 +1,85 @@
+@import "mixin.scss";
+@import "variable.scss";
+
+// fonts
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 400;
+  src: local("Pretendard"),
+    url("/fonts/Pretendard-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 500;
+  src: local("Pretendard"),
+    url("/fonts/Pretendard-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 700;
+  src: local("Pretendard"), url("/fonts/Pretendard-Bold.woff2") format("woff2");
+}
+
+html,
+body {
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  -o-text-size-adjust: none;
+}
+body {
+  font-size: 14px;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-family: "Pretendard", sans-serif;
+  font-weight: 400;
+  box-sizing: border-box;
+}
+
+article,
+footer,
+header,
+nav,
+section {
+  display: block;
+}
+
+ul,
+ol,
+dl {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+
+.blind {
+  display: block;
+  position: absolute;
+  left: 1000em;
+  top: 0;
+  overflow: hidden;
+}

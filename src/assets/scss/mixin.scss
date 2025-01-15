@@ -1,0 +1,40 @@
+@mixin box($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin bordered($color, $width) {
+  border: $width solid $color;
+}
+
+@mixin flexbox($jc, $ai) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+}
+@mixin inline-flex-box($jc, $ai) {
+  display: inline-flex;
+  justify-content: $jc;
+  align-items: $ai;
+}
+
+// responsive
+$tablet: 768px;
+$laptop: 1020px;
+$desktop: 1400px;
+
+@mixin desktop {
+  @media screen and (max-width: #{$desktop}) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media screen and (max-width: #{$laptop}) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (max-width: #{$tablet}) {
+    @content;
+  }
+}
