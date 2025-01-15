@@ -31,8 +31,7 @@ body {
   -o-text-size-adjust: none;
 }
 html {
-  /* 62.5% of 16px browser font size is 10px */
-  /* 16px * 0.625 = 10px */
+  scroll-behavior: smooth;
   font-size: 62.5%;
 }
 body {
@@ -91,4 +90,14 @@ select {
   left: 1000em;
   top: 0;
   overflow: hidden;
+}
+
+#scroll-container {
+  position: relative; /* LocomotiveScroll의 기본 설정 */
+  overflow: hidden; /* LocomotiveScroll에서 스크롤을 관리하기 위해 필요 */
+  height: 100%; /* 컨테이너 높이를 페이지 전체로 설정 */
+}
+
+.scroll-contents {
+  margin-top: 8rem;
 }

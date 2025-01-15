@@ -1,6 +1,10 @@
 // mixin.scss
 
-@mixin box($width, $height) {
+@mixin same-size($size) {
+  width: $size;
+  height: $size;
+}
+@mixin size($width, $height) {
   width: $width;
   height: $height;
 }

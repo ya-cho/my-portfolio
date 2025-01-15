@@ -1,4 +1,5 @@
 import Intro from "./Intro";
 import Header from "./Header";
+import Footer from "./Footer";
 
-export { Intro, Header };
+export { Intro, Header, Footer };

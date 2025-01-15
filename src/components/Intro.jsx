@@ -23,16 +23,18 @@ export default function Intro({ onComplete }) {
       tween.play();
     }
 
-    // 5초 후 fade out 애니메이션 실행
+    // 5초 후 fade out 및 위로 이동 애니메이션 실행
     const timer = setTimeout(() => {
       gsap.to(containerRef.current, {
         opacity: 0,
-        duration: 0.5, // 페이드 아웃 시간
+        y: "-100vh", // 화면의 맨 아래에서 맨 위로 이동
+        duration: 1, // 페이드 아웃 및 이동 시간
+        ease: "power2.out", // 자연스러운 이동을 위한 easing
         onComplete: () => {
           if (onComplete) onComplete(); // 부모 컴포넌트로 종료 신호 전송
         },
       });
-    }, 5000);
+    }, 3000);
 
     // 클린업
     return () => clearTimeout(timer);

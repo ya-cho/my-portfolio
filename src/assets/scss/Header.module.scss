@@ -4,9 +4,21 @@
 @import "./variable.scss";
 
 .header {
-  @include flexbox(center, center);
-  height: 60px;
+  padding: 2rem 4rem;
+  @include flexbox(space-between, center);
+  @include size(100%, 80px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  border: 1px solid #000;
   @include desktop {
     background: #000;
+  }
+
+  .logo {
+    display: block;
+    @include size(3.8rem, 3.4rem);
+    background: url("./../images/ya-logo.svg") no-repeat center 100%;
   }
 }
