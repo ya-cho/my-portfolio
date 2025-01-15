@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Intro, Header } from "./../components";
+import { Intro, Header } from "../components";
 
-function MainLayout() {
+function Home() {
   const [showIntro, setShowIntro] = useState(true);
 
   const handleIntroComplete = () => {
@@ -15,10 +15,11 @@ function MainLayout() {
       ) : (
         <>
           <Header />
+          <section></section>
         </>
       )}
     </div>
   );
 }
 
-export default MainLayout;
+export default Home;

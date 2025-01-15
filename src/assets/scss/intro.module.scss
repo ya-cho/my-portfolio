@@ -7,10 +7,13 @@
   flex-direction: column;
   height: 100vh;
   background: $black;
-  img {
+  .object {
     @include box(60px, 60px);
+    background: url("./../images/intro-object.svg") no-repeat;
+    background-size: 100%;
   }
   .user-title {
+    margin-top: 2rem;
     display: inline-block;
     outline: none;
     background: $black;
@@ -19,7 +22,7 @@
     border-radius: 10rem;
     padding: 1.2rem 2.5rem;
     text-transform: uppercase;
-    font-size: 3.2rem;
+    font-size: 3.6rem;
     font-weight: 700;
     line-height: 1;
   }

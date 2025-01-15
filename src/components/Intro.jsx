@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import Icon from "./../assets/images/intro-object.svg";
 import styles from "./../assets/scss/intro.module.scss";
 
 export default function Intro({ onComplete }) {
@@ -10,12 +9,11 @@ export default function Intro({ onComplete }) {
 
   useEffect(() => {
     // 초기 애니메이션
-    const nav = textRef.current;
-    if (nav) {
+    const text = textRef.current;
+    if (text) {
       const tween = gsap.to(objRef.current, {
         duration: 2,
-        x: () => nav.offsetWidth, // nav의 px 너비만큼 이동
-        xPercent: -100,
+        x: text.offsetWidth, // text의 px 너비만큼 이동
         rotation: 360,
         ease: "none",
         paused: true, // 시작 시 멈춤 상태
@@ -43,9 +41,7 @@ export default function Intro({ onComplete }) {
   return (
     <section ref={containerRef} className={styles.intro}>
       <div className={styles["intro-container"]}>
-        <div ref={objRef} className={styles.object}>
-          <img src={Icon} alt="인트로 오브젝트" />
-        </div>
+        <div ref={objRef} className={styles.object}></div>
         <h2 ref={textRef} className={styles["user-title"]}>
           Yoona Portfolio
         </h2>
