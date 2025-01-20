@@ -1,5 +1,6 @@
 // global.scss
 
+@import "app.scss";
 @import "mixin.scss";
 @import "variable.scss";
 
@@ -92,12 +93,7 @@ select {
   overflow: hidden;
 }
 
-#scroll-container {
-  position: relative; /* LocomotiveScroll의 기본 설정 */
-  overflow: hidden; /* LocomotiveScroll에서 스크롤을 관리하기 위해 필요 */
-  height: 100%; /* 컨테이너 높이를 페이지 전체로 설정 */
-}
-
-.scroll-contents {
-  margin-top: 8rem;
+.contents-container {
+  margin-top: 7.2rem;
+  height: 1500px;
 }

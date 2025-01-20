@@ -1,9 +1,10 @@
-// Home.jsx 메인화면
+/**
+ * Home.jsx
+ * 홈 화면
+ */
 
-import { useEffect, useState } from "react";
-import LocomotiveScroll from "locomotive-scroll";
-import "locomotive-scroll/dist/locomotive-scroll.css";
-import { Intro, Header, Footer } from "../components";
+import { useState } from "react";
+import { Intro, Header, Footer, MainVisual } from "../components";
 
 function Home() {
   const [showIntro, setShowIntro] = useState(true);
@@ -11,20 +12,6 @@ function Home() {
   const handleIntroComplete = () => {
     setShowIntro(false); // Intro 제거
   };
-
-  useEffect(() => {
-    const container = document.querySelector("#scroll-container");
-    if (container) {
-      const scroll = new LocomotiveScroll({
-        el: container,
-        smooth: true,
-      });
-
-      return () => scroll.destroy();
-    } else {
-      console.error("Scroll container not found");
-    }
-  }, []);
 
   return (
     <>
@@ -42,14 +29,14 @@ function Home() {
         </>
       )} */}
 
-      <div id="scroll-container" data-scroll-container>
-        <Header />
-        <main className="scroll-contents">
-          <section>섹션</section>
-        </main>
+      <Header />
+      <main className="contents-container">
+        <section>
+          <MainVisual />
+        </section>
+      </main>
 
-        <Footer />
-      </div>
+      <Footer />
     </>
   );
 }

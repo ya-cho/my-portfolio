@@ -1,0 +1,33 @@
+// MainVisual.module.scss
+
+@import "./variable.scss";
+.main-visual {
+  background: $black;
+  color: #fffce1;
+}
+
+.scroll-observer {
+  .container {
+    position: relative;
+  }
+
+  .scroll-observer__heading-svg {
+    position: absolute;
+    visibility: visible;
+    z-index: 10;
+    pointer-events: none; // 텍스트 아래로 클릭되지 않도록 설정
+  }
+
+  .scroll-observer__heading-word--1,
+  .scroll-observer__heading-word--2,
+  .scroll-observer__heading-word--3 {
+    display: inline-block;
+    position: relative;
+  }
+
+  .u,
+  .o {
+    display: inline-block;
+    position: relative;
+  }
+}
