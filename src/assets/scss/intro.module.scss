@@ -5,11 +5,11 @@
 .intro {
   @include flexbox(center, center);
   flex-direction: column;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   background: $black;
   .object {
     @include same-size(8rem);
-    background: url("./../images/intro-object.svg") no-repeat;
+    background: url("./../images/object_intro.svg") no-repeat;
     background-size: 100%;
   }
   .user-title {

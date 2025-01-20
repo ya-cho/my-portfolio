@@ -1,0 +1,12 @@
+<svg id="svg-stage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" opacity="0">
+    <rect fill="url(#a)" clip-path="url(#cp)" width="300" height="300"/>
+    <defs>
+      <clipPath id="cp">
+        <path id="clover" d="M181 121h-.5v-1h.5a60 60 0 1 0-60-60v.5h-1V60a60 60 0 1 0-60 60h.5v1H60a60 60 0 1 0 60 60v-.5h1v.5a60 60 0 1 0 60-60Z"/>
+      </clipPath>
+      <linearGradient id="a" x1="0" y1="0" x2="280" y2="200" gradientUnits="userSpaceOnUse">
+        <stop offset=".3" stop-color="#FEC5FB"/>
+        <stop offset=".8" stop-color="#00BAE2"/>
+      </linearGradient>
+    </defs>
+  </svg>

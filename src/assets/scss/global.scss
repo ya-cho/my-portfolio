@@ -5,7 +5,6 @@
 @import "variable.scss";
 
 // fonts
-
 @font-face {
   font-family: "Pretendard";
   font-weight: 400;
@@ -22,6 +21,15 @@
   font-family: "Pretendard";
   font-weight: 700;
   src: local("Pretendard"), url("/fonts/Pretendard-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 900;
+  src: local("Pretendard"), url("/fonts/Pretendard-Black.woff2") format("woff2");
+}
+
+:root {
+  --vh: 100%;
 }
 
 html,
