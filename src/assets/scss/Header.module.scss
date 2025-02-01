@@ -10,12 +10,20 @@
   position: fixed;
   top: 0;
   left: 0;
-  background: $white;
+  background: transparent;
   z-index: 10;
 
   .logo {
     display: block;
-    @include size(3.8rem, 3.4rem);
+    @include size(4.2rem, 3.4rem);
     background: url("./../images/logo_ya.svg") no-repeat center / 100%;
+  }
+  .menu-button::before {
+    padding: 0.8rem 0 0.8rem 0.8rem;
+    display: block;
+    content: "";
+    @include size(2.8rem, 1.6rem);
+    background: url("./../images/icon_menu_button.svg") no-repeat center /
+      2.8rem 1.6rem;
   }
 }

@@ -50,7 +50,7 @@ export default function Intro({ onComplete }) {
       <div className={styles["intro-container"]}>
         <div ref={objRef} className={styles.object}></div>
         <h2 ref={textRef} className={styles["user-title"]}>
-          Yoona Portfolio
+          Yoona's Creative Works
         </h2>
       </div>
     </section>

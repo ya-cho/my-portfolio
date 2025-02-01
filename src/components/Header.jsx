@@ -30,11 +30,13 @@ const Header = () => {
   return (
     <header className={styles.header} ref={headerRef}>
       <h1>
-        <Link to="/page1" className={styles.logo}>
+        <Link to="/" className={styles.logo}>
           <span className="blind">홈화면으로 이동</span>
         </Link>
       </h1>
-      <span className={styles["menu-button"]} aria-label="메뉴 보기"></span>
+      <button className={styles["menu-button"]} aria-label="전체 메뉴">
+        <span className="blind">전체 메뉴 리스트 펼치기</span>
+      </button>
     </header>
   );
 };

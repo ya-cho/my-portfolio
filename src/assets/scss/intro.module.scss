@@ -6,9 +6,9 @@
   @include flexbox(center, center);
   flex-direction: column;
   height: calc(var(--vh, 1vh) * 100);
-  background: $black;
+  background: $light-gray;
   .object {
-    @include same-size(8rem);
+    @include same-size(7.2rem);
     background: url("./../images/object_intro.svg") no-repeat;
     background-size: 100%;
   }
@@ -18,11 +18,11 @@
     outline: none;
     background: $black;
     @include bordered(2px, #fffce1);
-    color: #fffce1;
+    color: $light-gray;
     border-radius: 10rem;
-    padding: 1.2rem 2.5rem;
+    padding: 1.2rem 2.8rem;
     text-transform: uppercase;
-    font-size: 5.2rem;
+    font-size: calc(56px + 1vw);
     font-weight: 700;
     line-height: 1;
   }
