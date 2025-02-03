@@ -8,23 +8,25 @@ import { gsap } from "gsap";
 import styles from "./../assets/scss/intro.module.scss";
 
 export default function Intro({ onComplete }) {
-  const objRef = useRef(null); // 애니메이션 오브젝트
-  const textRef = useRef(null); // 텍스트 참조
-  const containerRef = useRef(null); // 전체 컨테이너 참조
+  const objRef = useRef(null); // * 오브젝트
+  const textRef = useRef(null); // 텍스트
+  const containerRef = useRef(null); // 전체 컨테이너
 
   useEffect(() => {
-    // 시작 애니메이션
     const text = textRef.current;
-    if (text) {
-      const tween = gsap.to(objRef.current, {
+    const obj = objRef.current;
+
+    if (text && obj) {
+      const distance = text.offsetWidth - obj.offsetWidth;
+
+      const tween = gsap.to(obj, {
         duration: 2,
-        x: text.offsetWidth,
+        x: distance,
         rotation: 360,
         ease: "none",
         paused: true,
       });
 
-      // 애니메이션 시작
       tween.play();
     }
 

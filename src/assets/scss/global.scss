@@ -47,9 +47,10 @@ html {
 body {
   width: 100%;
   min-height: 100vh;
-  font-size: calc(16px + 0.3vw);
+  font-size: clamp(14px, 2vw, 1.6rem);
   line-height: 1.5;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 * {
@@ -115,6 +116,25 @@ button {
   left: 1000em;
   top: 0;
   overflow: hidden;
+}
+
+// floating button
+.floating-top-button {
+  position: fixed;
+  right: 4rem;
+  bottom: 4rem;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .top-button {
+    @include same-size(4.8rem);
+    background: url("./../images/icon_top_button.svg") no-repeat center / 100%;
+  }
 }
 
 .contents-container {

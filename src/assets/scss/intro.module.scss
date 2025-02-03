@@ -3,6 +3,7 @@
 @import "./variable.scss";
 
 .intro {
+  margin: 0 4rem;
   @include flexbox(center, center);
   flex-direction: column;
   height: calc(var(--vh, 1vh) * 100);
@@ -22,7 +23,7 @@
     border-radius: 10rem;
     padding: 1.2rem 2.8rem;
     text-transform: uppercase;
-    font-size: calc(56px + 1vw);
+    font-size: clamp(30px, 5vw, 6rem);
     font-weight: 700;
     line-height: 1;
   }

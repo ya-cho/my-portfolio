@@ -1,3 +1,7 @@
+/**
+ * Footer.jsx
+ */
+
 import styles from "./../assets/scss/Footer.module.scss";
 
 export default function Footer() {
