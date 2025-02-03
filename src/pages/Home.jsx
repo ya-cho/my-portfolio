@@ -4,7 +4,7 @@
  */
 
 import { useState } from "react";
-import { Intro, Header, Footer, MainVisual, TopButton } from "../components";
+import { Intro, Header, Footer, Main, TopButton } from "../components";
 
 function Home() {
   const [showIntro, setShowIntro] = useState(true);
@@ -31,11 +31,7 @@ function Home() {
       <TopButton />
       <Header />
 
-      <main className="contents-container">
-        <section>
-          <MainVisual />
-        </section>
-      </main>
+      <Main />
 
       <Footer />
     </>

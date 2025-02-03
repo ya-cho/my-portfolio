@@ -1,7 +1,7 @@
 import Intro from "./Intro";
 import Header from "./Header";
 import Footer from "./Footer";
-import MainVisual from "./MainVisual";
+import Main from "./Main";
 import TopButton from "./TopButton";
 
-export { Intro, Header, Footer, MainVisual, TopButton };
+export { Intro, Header, Footer, Main, TopButton };

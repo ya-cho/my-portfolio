@@ -124,7 +124,9 @@ const Header = () => {
               </li>
             </ul>
           </nav>
-          <p>Designed & Developed by YoonA © 2025</p>
+          <p className={styles.copyright}>
+            Designed & Developed by YoonA © 2025
+          </p>
         </div>
       </div>
     </>
