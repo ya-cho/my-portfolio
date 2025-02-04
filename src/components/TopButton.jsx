@@ -1,6 +1,6 @@
 /**
  * TopButton.jsx
- * 각 화면에 들어가는 탑버튼 element
+ * © 2025 yoona. All rights reserved.
  */
 
 import React, { useState, useEffect } from "react";
@@ -61,6 +61,7 @@ export default function ScrollTopButton() {
         type="button"
         className="top-button"
         aria-label="페이지 상단으로 가기"
+        data-hoverable="true"
         onClick={scrollToTop}
       >
         <span className="blind">페이지 상단으로 가기 버튼</span>

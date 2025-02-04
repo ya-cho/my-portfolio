@@ -1,6 +1,6 @@
 /**
  * Home.jsx
- * 홈 화면
+ * © 2025 yoona. All rights reserved.
  */
 
 import { useState } from "react";
@@ -19,20 +19,18 @@ function Home() {
         <Intro onComplete={handleIntroComplete} />
       ) : (
         <>
+          <TopButton />
           <Header />
-          <div id="scroll-container">
-            <main>
-              <section>섹션</section>
-            </main>
-          </div>
+
+          <Main />
+
           <Footer />
         </>
       )} */}
+
       <TopButton />
       <Header />
-
       <Main />
-
       <Footer />
     </>
   );

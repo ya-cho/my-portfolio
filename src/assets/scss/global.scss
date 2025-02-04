@@ -1,8 +1,8 @@
 // global.scss
 
-@import "app.scss";
 @import "mixin.scss";
 @import "variable.scss";
+@import "app.scss"; //화면 레이아웃
 
 // fonts
 @font-face {
@@ -29,9 +29,7 @@
 }
 
 :root {
-  --vh: 100%;
   font-size: 62.5%;
-  background: $bg-gray;
 }
 
 html,
@@ -46,11 +44,12 @@ html {
 }
 body {
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(var(--vh) * 100);
   font-size: clamp(12px, 4vw, 1.6rem);
   line-height: 1.5;
   box-sizing: border-box;
   overflow-x: hidden;
+  background: $bg-gray;
 }
 
 * {
@@ -61,6 +60,10 @@ body {
   font-family: "Pretendard", sans-serif;
   font-weight: 400;
   box-sizing: border-box;
+  cursor: none;
+  @include tablet {
+    cursor: auto;
+  }
 }
 
 article,
@@ -110,6 +113,15 @@ button {
   appearance: none;
 }
 
+a,
+button,
+[data-hoverable="true"] {
+  cursor: none;
+  @include tablet {
+    cursor: auto;
+  }
+}
+
 .blind {
   display: block;
   position: absolute;
@@ -126,7 +138,7 @@ button {
   transition: opacity 0.3s ease;
   opacity: 0;
   pointer-events: none;
-  z-index: 9;
+  z-index: 100;
   &.active {
     opacity: 1;
     pointer-events: auto;
@@ -138,95 +150,10 @@ button {
   }
 }
 
-// main
-.main-visual {
-  padding: 10rem;
-  margin-top: 7.2rem;
-  position: relative;
-  overflow: hidden;
-  height: calc(var(--vh, 1vh) * 100);
-  .follow-circle-box {
-    position: absolute;
-    z-index: 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    .circle {
-      position: absolute;
-      width: 0;
-      height: 0;
-      &::before {
-        display: block;
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) skew(0);
-        width: 52.4375em;
-        aspect-ratio: 839 / 932;
-        filter: blur(50px);
-        -webkit-filter: blur(50px);
-        background: url("./../images/main_circle_object.svg") no-repeat center /
-          100%;
-        animation: 25s linear infinite normal forwards running skewCircle;
-        transition: transform 0.1s ease-out;
-      }
-    }
-  }
-  .title-area {
-    position: relative;
-    .main-title {
-      @include flexbox(center, null);
-      gap: 8rem;
-      * {
-        font-size: clamp(56px, 8vw, 14rem);
-        font-weight: 700;
-      }
-      .changing-words {
-        position: relative;
-        @include flexbox(null, center);
-        gap: 1.6rem;
-        &::before {
-          display: inline-block;
-          content: "{";
-        }
-        &::after {
-          display: inline-block;
-          content: "}";
-        }
-        .word-wrap {
-          position: relative;
-          transition: all 0.3s;
-          span {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            opacity: 0;
-            &.on {
-              opacity: 1;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-@keyframes skewCircle {
-  0% {
-    transform: translate(-50%, -50%) skew(0);
-  }
-  15% {
-    transform: translate(-50%, -50%) skew(5deg, 50deg) scale(0.75);
-  }
-  45% {
-    transform: translate(-50%, -50%) skew(0, 20deg) scale(0.9);
-  }
-  80% {
-    transform: translate(-50%, -50%) skew(-15deg, 50deg) scale(1.025);
-  }
-  95% {
-    transform: translate(-50%, -50%) skew(0) scale(1);
+// 모바일 환경에서만 노출
+[class*="-m"] {
+  display: none;
+  @include tablet {
+    display: block;
   }
 }

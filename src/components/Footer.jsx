@@ -1,5 +1,6 @@
 /**
  * Footer.jsx
+ * © 2025 yoona. All rights reserved.
  */
 
 import styles from "./../assets/scss/Footer.module.scss";
@@ -7,7 +8,14 @@ import styles from "./../assets/scss/Footer.module.scss";
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      <h1>로고</h1>
+      <h4 className={styles.top}>CHOYOONA</h4>
+      <div className={styles.bottom}>
+        <p>©2025 Yoona. All rights reserved.</p>
+        <ul>
+          <li>T. 010 2101 9758</li>
+          <li>M. yacho.215@gmail.com</li>
+        </ul>
+      </div>
     </footer>
   );
 }

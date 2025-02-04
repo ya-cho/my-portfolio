@@ -1,11 +1,11 @@
 /**
  * Intro.jsx
- * 인트로 애니메이션 화면
+ * © 2025 yoona. All rights reserved.
  */
 
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import styles from "./../assets/scss/intro.module.scss";
+import styles from "./../assets/scss/Intro.module.scss";
 
 export default function Intro({ onComplete }) {
   const objRef = useRef(null); // * 오브젝트

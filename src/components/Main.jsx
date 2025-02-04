@@ -1,29 +1,36 @@
+/**
+ * Main.jsx
+ * © 2025 yoona. All rights reserved.
+ */
+
 import React, { useEffect, useState, useRef } from "react";
-import gsap from "gsap";
+import { gsap } from "gsap";
 
 export default function Main() {
-  // follow circle 위한 변수
+  // circle 변수
   const boxRef = useRef(null);
-  const initialX = 792;
+  const initialX = 900;
   const initialY = 479;
   const [position, setPosition] = useState({ x: initialX, y: initialY });
   const [targetPosition, setTargetPosition] = useState({
     x: initialX,
     y: initialY,
   });
-  // 텍스트 애니메이션
+  // 텍스트 애니메이션 변수
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef(null);
   const words = ["UI/UX", "Web", "Creative"];
+  // 텍스트 fadeup
+  const textRef = useRef(null);
 
-  // follow circle
+  // circle 애니메이션 작동 함수
   useEffect(() => {
     const box = boxRef.current;
 
+    // 속도 지연
     const lerp = (start, end, factor) => start + (end - start) * factor;
-
     let animationFrameId;
-    const smoothFactor = 0.005; // 값이 작을수록 더 느리게 움직임 (0.01 ~ 0.1 사이 권장)
+    const smoothFactor = 0.005; // 값이 작을수록 더 느리게 움직임
 
     const updatePosition = () => {
       setPosition((prev) => ({
@@ -56,28 +63,34 @@ export default function Main() {
       box.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, [targetPosition]);
-
-  // 텍스트 애니메이션
+  // text 애니메이션 작동 함수
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % words.length);
-    }, 2000); // 1초마다 변경
+    }, 2000);
 
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
     const activeSpan = containerRef.current?.children[currentIndex];
     if (activeSpan) {
       const spanWidth = activeSpan.offsetWidth;
       containerRef.current.style.width = `${spanWidth}px`;
     }
-  }, [currentIndex]);
+
+    return () => clearInterval(interval);
+  }, [currentIndex, words.length]);
+  // text fadeup
+  useEffect(() => {
+    gsap.fromTo(
+      textRef.current,
+      { opacity: 0, y: 100 },
+      { opacity: 1, y: 0, duration: 1, ease: "power3.out" }
+    );
+  }, []);
 
   return (
     <main className="main">
-      <div className="main-visual">
-        <div className="follow-circle-box" ref={boxRef}>
+      {/* 메인 비주얼 */}
+      <section className="main-visual">
+        <div className="circle-box" ref={boxRef}>
           <div
             className="circle"
             style={{
@@ -86,7 +99,7 @@ export default function Main() {
             }}
           ></div>
         </div>
-        <div className="title-area">
+        <div className="title-area" ref={textRef}>
           <h2 className="main-title">
             <div className="changing-words">
               <div
@@ -112,10 +125,15 @@ export default function Main() {
             <li>UIUX PUBLISHER</li>
           </ul>
         </div>
-        <span className="spinner">
+        <a
+          href="https://github.com/ya-cho/my-portfolio"
+          target="_blank"
+          className="spin"
+          rel="noopener noreferrer"
+        >
           <span className="blind">깃 허브 바로가기</span>
-        </span>
-      </div>
+        </a>
+      </section>
     </main>
   );
 }

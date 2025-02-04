@@ -26,14 +26,8 @@
 
 // responsive
 $tablet: 768px;
-$laptop: 1020px;
-$desktop: 1400px;
+$laptop: 1024px;
 
-@mixin desktop {
-  @media screen and (max-width: #{$desktop}) {
-    @content;
-  }
-}
 @mixin laptop {
   @media screen and (max-width: #{$laptop}) {
     @content;

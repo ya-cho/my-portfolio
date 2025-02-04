@@ -1,5 +1,6 @@
 /**
  * Header.jsx
+ * © 2025 yoona. All rights reserved.
  */
 
 import React, { useEffect, useRef, useState } from "react";
@@ -58,13 +59,14 @@ const Header = () => {
         ref={headerRef}
       >
         <h1>
-          <Link to="/" className={styles.logo}>
+          <Link to="/" className={styles.logo} data-hoverable="true">
             <span className="blind">홈화면으로 이동</span>
           </Link>
         </h1>
         <button
           className={styles["menu-button"]}
           aria-label="전체 메뉴"
+          data-hoverable="true"
           onClick={() => setShowMenu(true)}
         >
           <span className="blind">전체 메뉴 리스트 펼치기</span>
@@ -79,6 +81,7 @@ const Header = () => {
               type="button"
               className={styles["btn-close"]}
               aria-label="전체 메뉴 닫기"
+              data-hoverable="true"
               onClick={() => setShowMenu(false)}
             >
               <span className="blind">전체 메뉴 닫기</span>

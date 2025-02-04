@@ -6,7 +6,7 @@
   margin: 0 4rem;
   @include flexbox(center, center);
   flex-direction: column;
-  height: calc(var(--vh, 1vh) * 100);
+  height: calc(var(--vh) * 100);
   background: $bg-gray;
   .object {
     @include same-size(7.2rem);
