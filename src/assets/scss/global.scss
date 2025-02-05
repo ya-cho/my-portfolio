@@ -1,4 +1,4 @@
-// global.scss
+// global.scss (공통)
 
 @import "mixin.scss";
 @import "variable.scss";
@@ -38,6 +38,10 @@ body {
   -moz-text-size-adjust: none;
   -ms-text-size-adjust: none;
   -o-text-size-adjust: none;
+  cursor: none !important;
+  @include tablet {
+    cursor: auto !important;
+  }
 }
 html {
   scroll-behavior: smooth;
@@ -45,7 +49,7 @@ html {
 body {
   width: 100%;
   min-height: calc(var(--vh) * 100);
-  font-size: clamp(12px, 4vw, 1.6rem);
+  font-size: clamp(12px, 2vw, 1.6rem);
   line-height: 1.5;
   box-sizing: border-box;
   overflow-x: hidden;
@@ -60,9 +64,9 @@ body {
   font-family: "Pretendard", sans-serif;
   font-weight: 400;
   box-sizing: border-box;
-  cursor: none;
+  cursor: none !important;
   @include tablet {
-    cursor: auto;
+    cursor: auto !important;
   }
 }
 
@@ -139,15 +143,32 @@ button,
   opacity: 0;
   pointer-events: none;
   z-index: 100;
+  @include tablet {
+    right: 2rem;
+    bottom: 2rem;
+  }
   &.active {
     opacity: 1;
     pointer-events: auto;
   }
-
   .top-button {
     @include same-size(4.8rem);
     background: url("./../images/icon_top_button.svg") no-repeat center / 100%;
   }
+}
+
+// 제목 폰트사이즈
+h3 {
+  font-size: clamp(28px, 5.2vw, 6rem);
+  font-weight: 900;
+}
+h4 {
+  font-size: clamp(24px, 4vw, 5.2rem);
+  font-weight: 900;
+}
+h5 {
+  font-size: clamp(20px, 3vw, 4rem);
+  font-weight: 700;
 }
 
 // 모바일 환경에서만 노출

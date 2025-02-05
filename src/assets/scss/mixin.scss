@@ -13,6 +13,10 @@
   border: $width solid $color;
 }
 
+@mixin radius($radius) {
+  border-radius: $radius;
+}
+
 @mixin flexbox($jc, $ai) {
   display: flex;
   justify-content: $jc;

@@ -87,42 +87,64 @@ const Header = () => {
               <span className="blind">전체 메뉴 닫기</span>
             </button>
           </div>
-          <nav className={styles.nav}>
+          <nav
+            className={styles.nav}
+            aria-label="주요 프로젝트 목록"
+            role="navigation"
+          >
             <ul>
               <li>
-                <Link to="">
+                <Link
+                  to="/work/koreanAir"
+                  aria-label="Korean Air - 인공지능 컨택센터 프로젝트"
+                >
                   <span>KOREAN AIR</span>
                   <span className={styles.focus}>인공지능 컨텍센터</span>
                 </Link>
               </li>
               <li>
-                <Link to="">
+                <Link
+                  to="/work/skEcoplant"
+                  aria-label="SK Ecoplant - 웨이블 서큘러 EPR 프로젝트"
+                >
                   <span>SK ECOPLANT</span>
                   <span className={styles.focus}>웨이블 서큘러 EPR</span>
                 </Link>
               </li>
               <li>
-                <Link to="">
+                <Link
+                  to="/work/kwangjuBank"
+                  abel="Kwangju Bank - 스마트뱅킹 프로젝트"
+                >
                   <span>KWANGJU BANK</span>
                   <span className={styles.focus}>스마트뱅킹</span>
                 </Link>
               </li>
               <li>
-                <Link to="">
+                <Link
+                  to="/work/cjFreshway"
+                  aria-label="CJ Freshway - FS 메뉴 프로젝트"
+                >
                   <span>CJ FRESHWAY</span>
                   <span className={styles.focus}>FS 메뉴</span>
                 </Link>
               </li>
               <li>
-                <Link to="">
+                <Link
+                  to="/work/fintech"
+                  aria-label="Fintech - 모니 하이브리드앱 프로젝트"
+                >
                   <span>FINTECH</span>
                   <span className={styles.focus}>모니 하이브리드앱</span>
                 </Link>
               </li>
               <li>
-                <Link to="">
+                <Link
+                  to="/work/payapp"
+                  aria-label="PayApp - 페이앱 홈페이지 프로젝트"
+                >
                   <span>PAYAPP</span>
-                  <span className={styles.focus}>핀테크 홈페이지</span>
+                  <span className={styles.focus}>페이앱 홈페이지</span>
                 </Link>
               </li>
             </ul>

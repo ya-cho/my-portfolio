@@ -8,7 +8,7 @@ import { gsap } from "gsap";
 import styles from "./../assets/scss/Intro.module.scss";
 
 export default function Intro({ onComplete }) {
-  const objRef = useRef(null); // * 오브젝트
+  const objRef = useRef(null); // 오브젝트
   const textRef = useRef(null); // 텍스트
   const containerRef = useRef(null); // 전체 컨테이너
 

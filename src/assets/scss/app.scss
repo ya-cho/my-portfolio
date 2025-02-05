@@ -162,3 +162,69 @@
     transform: rotate(360deg);
   }
 }
+
+// 섹션 레이아웃
+.section {
+  padding: 20rem 0;
+  @include tablet {
+    padding: 8rem 0;
+  }
+  .inner {
+    margin: 0 8rem;
+    @include laptop {
+      margin: 0 2.4rem;
+    }
+  }
+  &-title {
+    margin-bottom: 12rem;
+    text-align: center;
+    @include tablet {
+      margin-bottom: 4rem;
+    }
+  }
+  .tech-card {
+    display: flex;
+    gap: 2rem;
+    @include tablet {
+      flex-direction: column;
+    }
+    > li {
+      padding: 3rem;
+      background: $white;
+      @include radius(1.2rem);
+      flex: 1;
+      overflow: hidden;
+      @include tablet {
+        padding: 2rem;
+      }
+      &:first-child::before {
+        background: url("./../images/icon_react.svg") no-repeat center / 100%;
+      }
+      &:nth-child(2):before {
+        background: url("./../images/icon_markup.svg") no-repeat center / 100%;
+      }
+      &:last-child::before {
+        background: url("./../images/icon_chat.svg") no-repeat center / 100%;
+      }
+      &::before {
+        display: block;
+        content: "";
+        margin-bottom: 4rem;
+        @include same-size(6rem);
+        @include tablet {
+          margin-bottom: 2rem;
+          @include same-size(4rem);
+        }
+      }
+      span {
+        color: $gray-999;
+      }
+      h5 {
+        margin-bottom: 1.6rem;
+        @include tablet {
+          margin-bottom: 0.8rem;
+        }
+      }
+    }
+  }
+}
