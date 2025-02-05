@@ -11,22 +11,16 @@ import { useCursor } from "./../context/CursorContext";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Main() {
-  // circle 애니메이션
   const { cursorPosition } = useCursor();
   const boxRef = useRef(null);
   const initialX = 900;
   const initialY = 479;
   const [position, setPosition] = useState({ x: initialX, y: initialY });
-  const [targetPosition, setTargetPosition] = useState({
-    x: initialX,
-    y: initialY,
-  });
-  // 메인 비주얼 텍스트 애니메이션
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef(null);
   const words = ["UI/UX", "Web", "Creative"];
 
-  // circle 애니메이션 작동 함수
+  // Circle 애니메이션
   useEffect(() => {
     const box = boxRef.current;
     const smoothFactor = 0.005;
@@ -55,7 +49,8 @@ export default function Main() {
       cancelAnimationFrame(animationFrameId);
     };
   }, [cursorPosition]);
-  // 메인 비주얼 텍스트 애니메이션 작동 함수
+
+  // 메인 텍스트 변경 애니메이션
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % words.length);
@@ -69,7 +64,8 @@ export default function Main() {
 
     return () => clearInterval(interval);
   }, [currentIndex, words.length]);
-  // 메인 비주얼 타이틀 작동 함수
+
+  // 메인 타이틀
   useEffect(() => {
     gsap.fromTo(
       ".title-area",
@@ -77,6 +73,7 @@ export default function Main() {
       { opacity: 1, y: 0, duration: 1, ease: "power3.out" }
     );
   }, []);
+
   // 섹션 타이틀 애니메이션
   useEffect(() => {
     const animateTitle = () => {
@@ -124,11 +121,7 @@ export default function Main() {
         <div className="title-area">
           <h2 className="main-title">
             <div className="changing-words">
-              <div
-                className="word-wrap"
-                ref={containerRef}
-                style={{ width: "auto" }}
-              >
+              <div className="word-wrap" ref={containerRef}>
                 {words.map((letter, index) => (
                   <span
                     key={index}
@@ -156,6 +149,7 @@ export default function Main() {
           <span className="blind">깃 허브 바로가기</span>
         </a>
       </section>
+      {/* //메인 비주얼 */}
 
       {/* 기술 스택 */}
       <section className="section tech">
@@ -199,6 +193,7 @@ export default function Main() {
           </ul>
         </div>
       </section>
+      {/* //기술 스택 */}
     </main>
   );
 }
