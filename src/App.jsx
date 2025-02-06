@@ -5,7 +5,7 @@
 
 import React, { useEffect } from "react";
 import "./assets/scss/global.scss";
-import Router from "./Router";
+import CommonRouter from "./Router"; // Router를 CommonRouter로 바꿔서 import
 import { LenisProvider } from "./context/LenisContext";
 import { CursorProvider } from "./context/CursorContext";
 import { CustomCursor } from "./components";
@@ -40,7 +40,7 @@ function App() {
         <CursorProvider>
           <div className="app">
             <CustomCursor />
-            <Router />
+            <CommonRouter /> {/* 라우터 부분만 CommonRouter로 변경 */}
           </div>
         </CursorProvider>
       </LenisProvider>
