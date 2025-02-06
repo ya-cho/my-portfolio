@@ -4,6 +4,7 @@
 
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { ScrollTop } from "./components";
 
 // 인트로 화면
 import Intro from "./components/Intro";
@@ -11,18 +12,22 @@ import Intro from "./components/Intro";
 import Home from "./pages/Home";
 
 // 서브 페이지
-import Page1 from "./pages/Page1";
+import KoreanAir from "./pages/KoreanAir";
 
 function CommonRouter() {
   return (
-    <Routes>
-      {/* Main */}
-      <Route path="/intro" element={<Intro />}></Route>
-      {/* Intro */}
-      <Route path="/" element={<Home />}></Route>
-      {/* Sub page */}
-      <Route path="/work/koreanair" element={<Page1 />}></Route>
-    </Routes>
+    <>
+      {/* 페이지 전환 시 스크롤 맨 위로 이동 */}
+      <ScrollTop />
+      <Routes>
+        {/* Main */}
+        <Route path="/intro" element={<Intro />}></Route>
+        {/* Intro */}
+        <Route path="/" element={<Home />}></Route>
+        {/* Sub page */}
+        <Route path="/work/koreanair" element={<KoreanAir />}></Route>
+      </Routes>
+    </>
   );
 }
 

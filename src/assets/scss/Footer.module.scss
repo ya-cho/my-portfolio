@@ -1,7 +1,7 @@
 // footer.scss
 
-@import "./mixin.scss";
-@import "./variable.scss";
+@use "./mixin.scss" as *;
+@use "./variable.scss" as *;
 
 .footer {
   padding: 8rem;

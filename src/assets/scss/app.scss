@@ -1,7 +1,7 @@
 // app.scss
 
-@import "./mixin.scss";
-@import "./variable.scss";
+@use "./mixin.scss" as *;
+@use "./variable.scss" as *;
 
 // layout
 .main-visual {
@@ -166,6 +166,7 @@
 // 섹션 레이아웃
 .section {
   padding: 20rem 0;
+  overflow: hidden;
   @include tablet {
     padding: 8rem 0;
   }
@@ -180,49 +181,167 @@
     text-align: center;
     @include tablet {
       margin-bottom: 4rem;
+      transform-origin: center;
     }
   }
-  .tech-card {
-    display: flex;
-    gap: 2rem;
-    @include tablet {
-      flex-direction: column;
-    }
-    > li {
-      padding: 3rem;
-      background: $white;
-      @include radius(1.2rem);
-      flex: 1;
-      overflow: hidden;
-      @include tablet {
-        padding: 2rem;
+  // tech
+  &.tech {
+    .tech-card {
+      display: flex;
+      gap: 2rem;
+      @include laptop {
+        flex-direction: column;
       }
-      &:first-child::before {
-        background: url("./../images/icon_react.svg") no-repeat center / 100%;
-      }
-      &:nth-child(2):before {
-        background: url("./../images/icon_markup.svg") no-repeat center / 100%;
-      }
-      &:last-child::before {
-        background: url("./../images/icon_chat.svg") no-repeat center / 100%;
-      }
-      &::before {
-        display: block;
-        content: "";
-        margin-bottom: 4rem;
-        @include same-size(6rem);
+      > li {
+        padding: 3rem;
+        background: $white;
+        @include radius(1.2rem);
+        flex: 1;
+        overflow: hidden;
         @include tablet {
-          margin-bottom: 2rem;
-          @include same-size(4rem);
+          padding: 2rem;
+        }
+        &:first-child::before {
+          background: url("./../images/icon_react.svg") no-repeat center / 100%;
+        }
+        &:nth-child(2):before {
+          background: url("./../images/icon_markup.svg") no-repeat center / 100%;
+        }
+        &:last-child::before {
+          background: url("./../images/icon_chat.svg") no-repeat center / 100%;
+        }
+        &::before {
+          display: block;
+          content: "";
+          margin-bottom: 4rem;
+          @include same-size(6rem);
+          @include tablet {
+            margin-bottom: 2rem;
+            @include same-size(4rem);
+          }
+        }
+        span {
+          color: $gray-999;
+        }
+        h5 {
+          margin-bottom: 1.6rem;
+          @include tablet {
+            margin-bottom: 0.8rem;
+          }
         }
       }
-      span {
-        color: $gray-999;
+    }
+  }
+  &.works {
+    .work-item {
+      padding: 0 clamp(2rem, 1vw, 12rem);
+      @include laptop {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 6rem;
       }
-      h5 {
-        margin-bottom: 1.6rem;
-        @include tablet {
-          margin-bottom: 0.8rem;
+      .item {
+        @include flexbox(null, center);
+        height: calc(var(--vh) * 100);
+        gap: clamp(1rem, 3vw, 3%);
+        @include laptop {
+          height: auto;
+          flex-direction: column;
+          gap: 0;
+        }
+        > * {
+          flex: 1;
+          transition: transform 3s;
+          @include laptop {
+            transform: none !important;
+          }
+        }
+        .img {
+          min-width: 50%;
+          transform: translate(-5%, 0) scale(0.8);
+          @include laptop {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+          }
+          img {
+            @include laptop {
+              width: 100%;
+              height: 130%;
+              object-fit: cover;
+              object-position: top;
+              will-change: transform;
+            }
+          }
+        }
+        .text {
+          padding: clamp(2.4rem, 3vw, 6rem);
+          @include flexbox(center, flex-start);
+          flex-direction: column;
+          -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+          transform: translate(5%, 0) scale(0.8);
+          position: relative;
+          z-index: 1;
+          @include laptop {
+            width: 100%;
+          }
+          @include tablet {
+            align-items: initial;
+          }
+          .project-name {
+            font-size: clamp(14px, 1.6vw, 2rem);
+            color: $gray-666;
+          }
+          .title {
+            margin: 1.6rem 0 0.8rem;
+            line-height: 1.2;
+          }
+          .tags {
+            display: flex;
+            gap: 0.8rem;
+            color: $gray-666;
+          }
+          .btn-round-large {
+            margin-top: 6rem;
+            @include laptop {
+              margin-top: 4rem;
+            }
+          }
+        }
+        // .item.focus
+        &.focus {
+          .img {
+            transform: translate(12%, 0) scale(1);
+          }
+          .text {
+            transform: translate(-12%, 0) scale(1);
+            background: rgba(245, 245, 245, 0.6);
+          }
+        }
+        // .item 짝수
+        &:nth-child(even) {
+          .img {
+            transform: translate(5%, 0) scale(0.8);
+          }
+          .text {
+            transform: translate(-5%, 0) scale(0.8);
+          }
+          &.focus {
+            .img {
+              transform: translate(-12%, 0) scale(1);
+            }
+            .text {
+              transform: translate(12%, 0) scale(1);
+            }
+          }
+          .img {
+            order: 2;
+            @include laptop {
+              order: initial;
+            }
+          }
         }
       }
     }

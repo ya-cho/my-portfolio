@@ -1,4 +1,4 @@
-export default function Page1() {
+export default function KoreanAir() {
   return (
     <>
       <h1>로고</h1>

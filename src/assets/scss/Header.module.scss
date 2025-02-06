@@ -1,7 +1,7 @@
 // header.scss
 
-@import "./mixin.scss";
-@import "./variable.scss";
+@use "./mixin.scss" as *;
+@use "./variable.scss" as *;
 
 .header {
   padding: 0 4rem;

@@ -4,7 +4,8 @@
  */
 
 import { useState } from "react";
-import { Intro, Header, Footer, Main, TopButton } from "../components";
+import { Intro, Header, Footer, Main } from "../components";
+import { TopButton } from "../components/elements";
 
 function Home() {
   const [showIntro, setShowIntro] = useState(true);

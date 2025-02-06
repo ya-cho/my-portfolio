@@ -1,7 +1,7 @@
 // intro.scss
 
-@import "./mixin.scss";
-@import "./variable.scss";
+@use "./mixin.scss" as *;
+@use "./variable.scss" as *;
 
 .intro {
   margin: 0 4rem;

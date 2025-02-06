@@ -1,6 +1,6 @@
 // MainVisual.module.scss
 
-@import "./variable.scss";
+@use "./variable.scss" as *;
 .main-visual {
   background: $black;
   color: #fffce1;
