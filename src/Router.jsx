@@ -3,7 +3,7 @@
  */
 
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
 import { ScrollTop } from "./components";
 
 // 인트로 화면
@@ -17,16 +17,15 @@ import KoreanAir from "./pages/KoreanAir";
 function CommonRouter() {
   return (
     <>
-      {/* 페이지 전환 시 스크롤 맨 위로 이동 */}
-      <ScrollTop />
-      <Routes>
-        {/* Main */}
-        <Route path="/intro" element={<Intro />}></Route>
-        {/* Intro */}
-        <Route path="/" element={<Home />}></Route>
-        {/* Sub page */}
-        <Route path="/work/koreanair" element={<KoreanAir />}></Route>
-      </Routes>
+      <BrowserRouter basename="/">
+        {/* 페이지 전환 시 스크롤 항상 위로 가게 */}
+        <ScrollTop />
+        <Routes>
+          <Route path="/intro" element={<Intro />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/work/koreanair" element={<KoreanAir />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
