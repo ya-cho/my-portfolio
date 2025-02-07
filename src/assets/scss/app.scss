@@ -6,7 +6,7 @@
 // layout
 .main-visual {
   @include flexbox(center, null);
-  padding: 7.2rem 10rem 4rem 10rem;
+  padding: 7.2rem 10rem 3.2rem 10rem;
   position: relative;
   overflow: hidden;
   height: calc(var(--vh) * 100);
@@ -14,7 +14,7 @@
     &::before {
       display: block;
       content: "";
-      width: 80%;
+      width: 90%;
       aspect-ratio: 1;
       position: absolute;
       top: 50%;
@@ -22,12 +22,12 @@
       transform: translate(-50%, -50%);
       background: url("./../images/main_circle_object_fix.svg") no-repeat center /
         100%;
-      filter: blur(50px);
-      -webkit-filter: blur(50px);
+      filter: blur(30px);
+      -webkit-filter: blur(30px);
     }
   }
   @include tablet {
-    padding: 7.2rem 2.4rem;
+    padding: 7.2rem 2.4rem 2.4rem;
   }
   .circle-box {
     position: absolute;
@@ -73,7 +73,7 @@
       @include tablet {
         flex-direction: column;
         // align-items: flex-start;
-        gap: 2rem;
+        gap: 1rem;
       }
       * {
         font-size: clamp(56px, 12vw, 12rem);
@@ -180,7 +180,7 @@
     margin-bottom: 12rem;
     text-align: center;
     @include tablet {
-      margin-bottom: 4rem;
+      margin-bottom: 6rem;
       transform-origin: center;
     }
   }
@@ -262,7 +262,7 @@
           transform: translate(-5%, 0) scale(0.8);
           @include laptop {
             position: relative;
-            aspect-ratio: 4 / 3;
+            aspect-ratio: 1;
             overflow: hidden;
           }
           img {
@@ -296,7 +296,9 @@
           }
           .title {
             margin: 1.6rem 0 0.8rem;
-            line-height: 1.2;
+            @include laptop {
+              margin: 1.2rem 0 0;
+            }
           }
           .tags {
             display: flex;
@@ -307,6 +309,7 @@
             margin-top: 6rem;
             @include laptop {
               margin-top: 4rem;
+              font-size: 1.6rem;
             }
           }
         }

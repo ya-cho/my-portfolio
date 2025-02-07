@@ -27,10 +27,10 @@
     background: url("./../images/logo_ya.svg") no-repeat center / 100%;
   }
   .menu-button::before {
-    padding: 0.8rem 0 0.8rem 0.8rem;
+    padding: 0.9rem 0 0.9rem 0.8rem;
     display: block;
     content: "";
-    @include size(2.8rem, 1.6rem);
+    @include size(2.8rem, 1.4rem);
     background: url("./../images/icon_menu_button.svg") no-repeat center /
       2.8rem 1.6rem;
   }
@@ -80,7 +80,7 @@
     }
     .nav {
       li {
-        padding: 2.4rem 8rem;
+        padding: clamp(1.8rem, 1vw, 2.4rem) 8rem;
         border-bottom: 1px solid $border-color;
         overflow: hidden;
         @include laptop {
@@ -94,7 +94,7 @@
           align-items: center;
           position: relative;
           span {
-            font-size: clamp(24px, 3vw, 4.8rem);
+            font-size: clamp(28px, 3vw, 4.8rem);
             font-weight: 700;
             color: $black;
             cursor: pointer;

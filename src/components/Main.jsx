@@ -202,8 +202,8 @@ export default function Main() {
             <span>Publisher</span>
           </h2>
           <ul className="bottom-text">
-            <li>Yoona</li>
             <li>2025 PORTFOLIO</li>
+            <li>Yoona</li>
             <li>UIUX PUBLISHER</li>
           </ul>
         </div>
