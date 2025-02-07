@@ -236,7 +236,7 @@ export default function Main() {
             </li>
             <li>
               <span>Markup & Style</span>
-              <h5>HTML/SCSS</h5>
+              <h5>HTML/CSS</h5>
               <p>
                 웹 접근성을 고려한 시맨틱한 마크업을 작성하며,
                 <br />
