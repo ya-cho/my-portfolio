@@ -126,46 +126,57 @@ export default function Main() {
 
     // work 애니메이션
     let mm = gsap.matchMedia();
-    // 1024px 이상일 때 실행될 애니메이션 (기존 아이템 애니메이션)
+    // 1024px 이상일 때 실행될 애니메이션
     mm.add("(min-width: 1025px)", () => {
       gsap.utils.toArray(".work-item .item").forEach((item) => {
-        gsap.to(item, {
+        // text 요소 .title 요소에 초기값 설정
+        gsap.set(item.querySelector(".text"), {
+          yPercent: -50,
+        });
+        gsap.set(item.querySelector(".text .title"), {
+          color: "#aaa",
+        });
+
+        // 스크롤 트리거 애니메이션
+        gsap.to(item.querySelector(".text"), {
+          yPercent: 0,
+          duration: 1,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: item,
             start: "top center",
             end: "bottom 20%",
             scrub: 1,
             toggleActions: "play none none reverse",
-            onEnter: () => {
-              item.classList.add("focus");
-            },
-            onLeave: () => {
-              item.classList.remove("focus");
-            },
-            onEnterBack: () => {
-              item.classList.add("focus");
-            },
-            onLeaveBack: () => {
-              item.classList.remove("focus");
-            },
+          },
+        });
+        // title opacity 애니메이션
+        gsap.to(item.querySelector(".text .title"), {
+          color: "#000",
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: item,
+            start: "top center",
+            end: "bottom 20%",
+            scrub: 1,
+            toggleActions: "play none none reverse",
           },
         });
       });
     });
 
-    // 썸네일 이미지 패럴럭스
-    mm.add("(max-width: 1024px)", () => {
-      gsap.utils.toArray(".work-item .img").forEach((imgContainer) => {
-        gsap.to(imgContainer.querySelector("img"), {
-          yPercent: -20,
-          ease: "none",
-          scrollTrigger: {
-            trigger: imgContainer,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1,
-          },
-        });
+    // work 썸네일 이미지 패럴럭스
+    gsap.utils.toArray(".work-item .img").forEach((imgContainer) => {
+      gsap.to(imgContainer.querySelector("img"), {
+        yPercent: -20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: imgContainer,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        },
       });
     });
 
@@ -264,155 +275,157 @@ export default function Main() {
 
       {/* works */}
       <section className="section works">
-        <h3 className="section-title">My works</h3>
-        <div className="work-item">
-          <div className="item">
-            <div className="img">
-              <img
-                src="/images/img_koreanair_thumbnail.png"
-                alt="대한항공 AICC AGENT WEB 인공지능 센터 구축"
-              />
+        <div className="inner">
+          <h3 className="section-title">My works</h3>
+          <div className="work-item">
+            <div className="item">
+              <div className="img">
+                <img
+                  src="/images/img_koreanair_thumbnail.png"
+                  alt="대한항공 AICC AGENT WEB 인공지능 센터 구축"
+                />
+              </div>
+              <div className="text">
+                <p className="project-name">대한항공 Agent Web</p>
+                <h4 className="title">
+                  대한항공 AICC AGENT WEB
+                  <br />
+                  인공지능 컨텍센터 구축
+                </h4>
+                <ul className="tags">
+                  <li>#react</li>
+                  <li>#cloudscape</li>
+                  <li>#html</li>
+                  <li>#scss</li>
+                  <li>#javscript</li>
+                </ul>
+                <Button to="/work/koreanair" className="btn-round-large">
+                  View
+                </Button>
+              </div>
             </div>
-            <div className="text">
-              <p className="project-name">대한항공 Agent Web</p>
-              <h4 className="title">
-                대한항공 AICC AGENT WEB
-                <br />
-                인공지능 컨텍센터 구축
-              </h4>
-              <ul className="tags">
-                <li>#react</li>
-                <li>#cloudscape</li>
-                <li>#html</li>
-                <li>#scss</li>
-                <li>#javscript</li>
-              </ul>
-              <Button to="/work/koreanair" className="btn-round-large">
-                View
-              </Button>
+            <div className="item">
+              <div className="img">
+                <img
+                  src="/images/img_sk_thumbnail.png"
+                  alt="SK 에코플랜트 Wayble Circular EPR 구축"
+                />
+              </div>
+              <div className="text">
+                <p className="project-name">SK에코플랜트 Wayble EPR</p>
+                <h4 className="title">
+                  SK에코플랜트 폐기물 처리 플랫폼
+                  <br />
+                  Wayble Circular EPR 구축
+                </h4>
+                <ul className="tags">
+                  <li>#react</li>
+                  <li>#html</li>
+                  <li>#scss</li>
+                  <li>#javscript</li>
+                </ul>
+                <Button to="/work/skEcoplant" className="btn-round-large">
+                  View
+                </Button>
+              </div>
             </div>
-          </div>
-          <div className="item">
-            <div className="img">
-              <img
-                src="/images/img_sk_thumbnail.png"
-                alt="SK 에코플랜트 Wayble Circular EPR 구축"
-              />
+            <div className="item">
+              <div className="img">
+                <img
+                  src="/images/img_gwangju_thumbnail.png"
+                  alt="광주은행 스마트뱅킹 앱 고도화"
+                />
+              </div>
+              <div className="text">
+                <p className="project-name">광주은행 고도화 Renewal</p>
+                <h4 className="title">
+                  광주은행
+                  <br />
+                  스마트뱅킹 앱 고도화
+                </h4>
+                <ul className="tags">
+                  <li>#html</li>
+                  <li>#css</li>
+                  <li>#jquery</li>
+                </ul>
+                <Button to="/work/kwangjuBank" className="btn-round-large">
+                  View
+                </Button>
+              </div>
             </div>
-            <div className="text">
-              <p className="project-name">SK에코플랜트 Wayble EPR</p>
-              <h4 className="title">
-                SK에코플랜트 폐기물 처리 플랫폼
-                <br />
-                Wayble Circular EPR 구축
-              </h4>
-              <ul className="tags">
-                <li>#react</li>
-                <li>#html</li>
-                <li>#scss</li>
-                <li>#javscript</li>
-              </ul>
-              <Button to="/work/skEcoplant" className="btn-round-large">
-                View
-              </Button>
+            <div className="item">
+              <div className="img">
+                <img
+                  src="/images/img_cj_thumbnail.png"
+                  alt="CJ 프레시웨이 FS MENU 구축"
+                />
+              </div>
+              <div className="text">
+                <p className="project-name">CJ 프레시웨이 FS MENU</p>
+                <h4 className="title">
+                  CJ 프레시웨이
+                  <br />
+                  FS MENU 구축
+                </h4>
+                <ul className="tags">
+                  <li>#react</li>
+                  <li>#html</li>
+                  <li>#scss</li>
+                  <li>#javscript</li>
+                </ul>
+                <Button to="/work/cjFreshway" className="btn-round-large">
+                  View
+                </Button>
+              </div>
             </div>
-          </div>
-          <div className="item">
-            <div className="img">
-              <img
-                src="/images/img_gwangju_thumbnail.png"
-                alt="광주은행 스마트뱅킹 앱 고도화"
-              />
+            <div className="item">
+              <div className="img">
+                <img
+                  src="/images/img_fintech_thumbnail.png"
+                  alt="핀테크 마이데이터 모니 하이브리드 앱 구축"
+                />
+              </div>
+              <div className="text">
+                <p className="project-name">Fintech</p>
+                <h4 className="title">
+                  핀테크 마이데이터 모니
+                  <br />
+                  하이브리드 앱 구축
+                </h4>
+                <ul className="tags">
+                  <li>#react</li>
+                  <li>#html</li>
+                  <li>#scss</li>
+                  <li>#javscript</li>
+                </ul>
+                <Button to="/work/fintech" className="btn-round-large">
+                  View
+                </Button>
+              </div>
             </div>
-            <div className="text">
-              <p className="project-name">광주은행 고도화 Renewal</p>
-              <h4 className="title">
-                광주은행
-                <br />
-                스마트뱅킹 앱 고도화
-              </h4>
-              <ul className="tags">
-                <li>#html</li>
-                <li>#css</li>
-                <li>#jquery</li>
-              </ul>
-              <Button to="/work/kwangjuBank" className="btn-round-large">
-                View
-              </Button>
-            </div>
-          </div>
-          <div className="item">
-            <div className="img">
-              <img
-                src="/images/img_cj_thumbnail.png"
-                alt="CJ 프레시웨이 FS MENU 구축"
-              />
-            </div>
-            <div className="text">
-              <p className="project-name">CJ 프레시웨이 FS MENU</p>
-              <h4 className="title">
-                CJ 프레시웨이
-                <br />
-                FS MENU 구축
-              </h4>
-              <ul className="tags">
-                <li>#react</li>
-                <li>#html</li>
-                <li>#scss</li>
-                <li>#javscript</li>
-              </ul>
-              <Button to="/work/cjFreshway" className="btn-round-large">
-                View
-              </Button>
-            </div>
-          </div>
-          <div className="item">
-            <div className="img">
-              <img
-                src="/images/img_fintech_thumbnail.png"
-                alt="핀테크 마이데이터 모니 하이브리드 앱 구축"
-              />
-            </div>
-            <div className="text">
-              <p className="project-name">Fintech</p>
-              <h4 className="title">
-                핀테크 마이데이터 모니
-                <br />
-                하이브리드 앱 구축
-              </h4>
-              <ul className="tags">
-                <li>#react</li>
-                <li>#html</li>
-                <li>#scss</li>
-                <li>#javscript</li>
-              </ul>
-              <Button to="/work/fintech" className="btn-round-large">
-                View
-              </Button>
-            </div>
-          </div>
-          <div className="item">
-            <div className="img">
-              <img
-                src="/images/img_payapp_thumbnail.png"
-                alt="결제솔루션 PAYAPP 홈페이지 제작"
-              />
-            </div>
-            <div className="text">
-              <p className="project-name">UDID</p>
-              <h4 className="title">
-                결제솔루션 PAYAPP
-                <br />
-                홈페이지 제작
-              </h4>
-              <ul className="tags">
-                <li>#html</li>
-                <li>#scss</li>
-                <li>#jquery</li>
-              </ul>
-              <Button to="/work/payapp" className="btn-round-large">
-                View
-              </Button>
+            <div className="item">
+              <div className="img">
+                <img
+                  src="/images/img_payapp_thumbnail.png"
+                  alt="결제솔루션 PAYAPP 홈페이지 제작"
+                />
+              </div>
+              <div className="text">
+                <p className="project-name">UDID</p>
+                <h4 className="title">
+                  결제솔루션 PAYAPP
+                  <br />
+                  홈페이지 제작
+                </h4>
+                <ul className="tags">
+                  <li>#html</li>
+                  <li>#scss</li>
+                  <li>#jquery</li>
+                </ul>
+                <Button to="/work/payapp" className="btn-round-large">
+                  View
+                </Button>
+              </div>
             </div>
           </div>
         </div>

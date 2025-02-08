@@ -16,6 +16,9 @@
   z-index: 10;
   @include laptop {
     padding: 0 2.4rem;
+    background: rgba(245, 245, 245, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
   }
   &.show {
     transform: translateY(0);

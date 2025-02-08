@@ -175,7 +175,7 @@ h5 {
 // 버튼
 .btn-round-large {
   @include inline-flex-box(center, center);
-  padding: 0 4rem;
+  padding: 0 6rem;
   height: 4.4rem;
   background: $white;
   @include bordered(1px, $black);
