@@ -128,11 +128,35 @@ button,
 }
 
 .blind {
-  display: block;
-  position: absolute;
-  left: 1000em;
-  top: 0;
-  overflow: hidden;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+// scroll
+::-webkit-scrollbar {
+  @include same-size(8px);
+}
+::-webkit-scrollbar-track {
+  background: $white;
+  @include radius(12px);
+}
+::-webkit-scrollbar-thumb {
+  background: #e2e2e2;
+  @include radius(12px);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 34, 34, 0.3);
 }
 
 // floating button
@@ -187,6 +211,18 @@ h5 {
   &:focus {
     background: $black;
     color: $white;
+  }
+}
+.btn-back {
+  @include same-size(6.8rem);
+  background: url("./../images/icon_detail_back.svg") no-repeat center / 100%;
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+  @include tablet {
+    @include same-size(5.4rem);
+    top: 2.4rem;
+    left: 2.4rem;
   }
 }
 

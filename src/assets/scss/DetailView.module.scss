@@ -1,0 +1,87 @@
+// DetailView.scss
+
+@use "./mixin.scss" as *;
+@use "./variable.scss" as *;
+
+.details {
+  background: $white;
+  section {
+    position: relative;
+    background-color: $white;
+  }
+  .visual {
+    height: calc(var(--vh) * 100);
+    .bg {
+      @include flexbox(null, center);
+      padding-left: clamp(24px, 6vw, 10rem);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      overflow: hidden;
+      .bg-title {
+        font-size: clamp(32px, 8vw, 10rem);
+        font-weight: 700;
+      }
+    }
+  }
+  &.koreanair {
+    .bg {
+      background-image: url("./../images/work_bg_koreanair.png");
+    }
+  }
+  .text {
+    padding: 13.6rem 0;
+    @include tablet {
+      padding: 8rem 2.4rem;
+    }
+    .text-wrapper {
+      margin: 0 auto;
+      max-width: 1000px;
+    }
+    .info {
+      margin: 4rem 0 6rem;
+      @include flexbox(space-between, null);
+      gap: 10rem;
+      font-size: clamp(14px, 2vw, 1.6rem);
+      @include tablet {
+        flex-direction: column;
+        gap: 4rem;
+      }
+      > li {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        span:last-child {
+          margin-top: 1.2rem;
+          padding-top: 1.2rem;
+          border-top: 2px solid $black;
+          color: $gray-666;
+        }
+      }
+    }
+    .overview {
+      font-size: clamp(14px, 2vw, 1.6rem);
+      dt {
+        margin-bottom: 2.4rem;
+        @include tablet {
+          margin-bottom: 1.4rem;
+        }
+      }
+      dd {
+        line-height: 1.8;
+      }
+    }
+  }
+  .guide {
+    padding: 2.4rem;
+    position: relative;
+    background: $bg-gray;
+    color: $gray-999;
+    font-size: 1.2rem;
+  }
+}
