@@ -183,6 +183,10 @@
   }
   // tech
   &.tech {
+    padding: 28rem 0 20rem;
+    @include tablet {
+      padding: 8rem 0;
+    }
     .tech-card {
       display: flex;
       gap: 2rem;

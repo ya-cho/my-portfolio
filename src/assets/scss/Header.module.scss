@@ -10,7 +10,6 @@
   position: fixed;
   top: 0;
   left: 0;
-  background: transparent;
   transform: translateY(-100%);
   transition: transform 0.3s ease;
   z-index: 10;
@@ -23,7 +22,9 @@
   &.show {
     transform: translateY(0);
   }
-
+  &.top {
+    background: transparent;
+  }
   .logo {
     display: block;
     @include size(4.2rem, 3.4rem);
@@ -33,7 +34,7 @@
     padding: 0.9rem 0 0.9rem 0.8rem;
     display: block;
     content: "";
-    @include size(2.8rem, 1.4rem);
+    @include size(2.8rem, 1.2rem);
     background: url("./../images/icon_menu_button.svg") no-repeat center /
       2.8rem 1.6rem;
   }

@@ -18,11 +18,15 @@ const Header = () => {
   const { lenisRef } = useLenis(); // lenis 초기화
   const [lastScrollY, setLastScrollY] = useState(0); // 마지막 스크롤 위치 추적
   const [isHeaderVisible, setIsHeaderVisible] = useState(true); // 헤더가 보이는지 여부
+  const [isTop, setIsTop] = useState(true); // 스크롤이 최상단인지 여부
 
   const scrollThreshold = 100; // 스크롤이 일정 거리 이상 내려갔을 때 반응
 
-  // 스크롤 이벤트를 감지하여 헤더의 보임/숨김 상태를 결정
+  // 스크롤 이벤트
   const handleScroll = () => {
+    // 스크롤 위치 0
+    setIsTop(window.scrollY === 0);
+
     if (window.scrollY > lastScrollY && window.scrollY > scrollThreshold) {
       // 스크롤이 아래로 내려가면 헤더 숨기기
       setIsHeaderVisible(false);
@@ -30,7 +34,7 @@ const Header = () => {
       // 스크롤이 위로 올라가면 헤더 보이게 하기
       setIsHeaderVisible(true);
     }
-    setLastScrollY(window.scrollY); // 마지막 스크롤 위치 업데이트
+    setLastScrollY(window.scrollY);
   };
 
   // 컴포넌트가 마운트될 때 스크롤 이벤트 리스너 추가, 언마운트 시 제거
@@ -44,10 +48,10 @@ const Header = () => {
   // 메뉴 열 때 스크롤 정지
   useEffect(() => {
     if (showMenu) {
-      lenisRef.current?.stop(); // 메뉴가 열리면 스크롤 정지
-      document.body.style.overflow = "hidden"; // body overflow 설정
+      lenisRef.current?.stop();
+      document.body.style.overflow = "hidden";
     } else {
-      lenisRef.current?.start(); // 메뉴가 닫히면 스크롤 다시 시작
+      lenisRef.current?.start();
       document.body.style.overflow = "";
     }
   }, [showMenu, lenisRef]);
@@ -55,7 +59,9 @@ const Header = () => {
   return (
     <>
       <header
-        className={`${styles.header} ${isHeaderVisible ? styles.show : ""}`}
+        className={`${styles.header} ${isHeaderVisible ? styles.show : ""} ${
+          isTop ? styles.top : ""
+        }`}
         ref={headerRef}
       >
         <h1>

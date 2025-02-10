@@ -22,23 +22,68 @@ export default function Main() {
   const words = ["UI/UX", "Web", "Creative"];
 
   // Circle 애니메이션
+  const isFirstMount = useRef(true);
+
   useEffect(() => {
     const box = boxRef.current;
+    const mainVisual = document.querySelector(".main-visual");
     const smoothFactor = 0.005;
     let animationFrameId;
+
+    // 초기 중앙 위치 설정 함수
+    const setCenterPosition = () => {
+      if (box) {
+        // viewport 기준으로 중앙 위치 계산
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+
+        const centerX = vw / 2;
+        const centerY = vh / 2;
+
+        setPosition({ x: centerX, y: centerY });
+      }
+    };
+
+    // 초기에 중앙 위치 설정
+    if (isFirstMount.current) {
+      setCenterPosition();
+      isFirstMount.current = false;
+      return;
+    }
 
     const lerp = (start, end, factor) => start + (end - start) * factor;
 
     const updatePosition = () => {
-      if (box) {
-        const boxRect = box.getBoundingClientRect();
-        const mouseX = cursorPosition.x - boxRect.left;
-        const mouseY = cursorPosition.y - boxRect.top;
+      if (box && mainVisual) {
+        const mainVisualRect = mainVisual.getBoundingClientRect();
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
 
-        setPosition((prev) => ({
-          x: lerp(prev.x, mouseX, smoothFactor),
-          y: lerp(prev.y, mouseY, smoothFactor),
-        }));
+        const isMouseInside =
+          cursorPosition.x >= mainVisualRect.left &&
+          cursorPosition.x <= mainVisualRect.right &&
+          cursorPosition.y >= mainVisualRect.top &&
+          cursorPosition.y <= mainVisualRect.bottom;
+
+        if (isMouseInside) {
+          const boxRect = box.getBoundingClientRect();
+          const mouseX = cursorPosition.x - boxRect.left;
+          const mouseY = cursorPosition.y - boxRect.top;
+
+          setPosition((prev) => ({
+            x: lerp(prev.x, mouseX, smoothFactor),
+            y: lerp(prev.y, mouseY, smoothFactor),
+          }));
+        } else {
+          // viewport 기준 중앙 위치로 이동
+          const centerX = vw / 2;
+          const centerY = vh / 2;
+
+          setPosition((prev) => ({
+            x: lerp(prev.x, centerX, smoothFactor),
+            y: lerp(prev.y, centerY, smoothFactor),
+          }));
+        }
       }
 
       animationFrameId = requestAnimationFrame(updatePosition);
@@ -46,8 +91,12 @@ export default function Main() {
 
     animationFrameId = requestAnimationFrame(updatePosition);
 
+    // resize 이벤트에서도 viewport 기준으로 중앙 위치 재계산
+    window.addEventListener("resize", setCenterPosition);
+
     return () => {
       cancelAnimationFrame(animationFrameId);
+      window.removeEventListener("resize", setCenterPosition);
     };
   }, [cursorPosition]);
 
@@ -105,19 +154,17 @@ export default function Main() {
     gsap.fromTo(
       ".tech-card li",
       {
-        opacity: 0,
         y: 200,
       },
       {
-        opacity: 1,
         y: 0,
         duration: 1.5,
         ease: "power3.out",
-        stagger: 0.4, // 순차적으로 등장
+        stagger: 0.4,
         scrollTrigger: {
-          trigger: ".tech-card",
-          start: "top 80%",
-          end: "bottom 20%",
+          trigger: ".tech",
+          start: "top center",
+          end: "bottom 80%",
           scrub: 1,
           toggleActions: "play none none reverse",
         },
@@ -134,7 +181,7 @@ export default function Main() {
           yPercent: -50,
         });
         gsap.set(item.querySelector(".text .title"), {
-          color: "#aaa",
+          color: "#ddd",
         });
 
         // 스크롤 트리거 애니메이션
@@ -144,8 +191,8 @@ export default function Main() {
           ease: "power2.out",
           scrollTrigger: {
             trigger: item,
-            start: "top center",
-            end: "bottom 20%",
+            start: "top 80%",
+            end: "bottom bottom",
             scrub: 1,
             toggleActions: "play none none reverse",
           },
@@ -157,7 +204,7 @@ export default function Main() {
           ease: "power2.out",
           scrollTrigger: {
             trigger: item,
-            start: "top center",
+            start: "top 50%",
             end: "bottom 20%",
             scrub: 1,
             toggleActions: "play none none reverse",
