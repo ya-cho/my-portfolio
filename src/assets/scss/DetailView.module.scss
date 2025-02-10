@@ -24,14 +24,21 @@
       background-size: cover;
       overflow: hidden;
       .bg-title {
-        font-size: clamp(32px, 8vw, 10rem);
+        font-size: clamp(36px, 8vw, 10rem);
         font-weight: 700;
       }
     }
   }
-  &.koreanair {
+  &.koreanair .bg {
+    background-image: url("./../images/work_bg_koreanair.png");
+    background-position: right;
+  }
+  &.sk-ecoplant {
+    .bg-title {
+      color: #227df4;
+    }
     .bg {
-      background-image: url("./../images/work_bg_koreanair.png");
+      background-image: url("./../images/work_bg_sk.png");
     }
   }
   .text {

@@ -8,7 +8,7 @@ import "./assets/scss/global.scss";
 import CommonRouter from "./Router"; // Router를 CommonRouter로 바꿔서 import
 import { LenisProvider } from "./context/LenisContext";
 import { CursorProvider } from "./context/CursorContext";
-import { CustomCursor } from "./components";
+import { CustomCursor, ScrollTop } from "./components";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -35,6 +35,7 @@ function App() {
 
   return (
     <>
+      <ScrollTop />
       <LenisProvider>
         {/* 메인 circle 객체 커서 위치 데이터를 공유하기 위해 CursorProvider 추가 */}
         <CursorProvider>

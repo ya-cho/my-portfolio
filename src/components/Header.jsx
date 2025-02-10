@@ -4,7 +4,7 @@
  */
 
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useLenis } from "./../context/LenisContext";
@@ -14,30 +14,35 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Header = () => {
   const headerRef = useRef(null);
-  const [showMenu, setShowMenu] = useState(false); // 헤더 메뉴
-  const { lenisRef } = useLenis(); // lenis 초기화
-  const [lastScrollY, setLastScrollY] = useState(0); // 마지막 스크롤 위치 추적
-  const [isHeaderVisible, setIsHeaderVisible] = useState(true); // 헤더가 보이는지 여부
-  const [isTop, setIsTop] = useState(true); // 스크롤이 최상단인지 여부
+  const [showMenu, setShowMenu] = useState(false);
+  const { lenisRef } = useLenis();
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [isTop, setIsTop] = useState(true);
+  const location = useLocation(); // 현재 location 가져오기
 
-  const scrollThreshold = 100; // 스크롤이 일정 거리 이상 내려갔을 때 반응
+  const scrollThreshold = 100;
 
-  // 스크롤 이벤트
   const handleScroll = () => {
-    // 스크롤 위치 0
     setIsTop(window.scrollY === 0);
 
     if (window.scrollY > lastScrollY && window.scrollY > scrollThreshold) {
-      // 스크롤이 아래로 내려가면 헤더 숨기기
       setIsHeaderVisible(false);
     } else {
-      // 스크롤이 위로 올라가면 헤더 보이게 하기
       setIsHeaderVisible(true);
     }
     setLastScrollY(window.scrollY);
   };
 
-  // 컴포넌트가 마운트될 때 스크롤 이벤트 리스너 추가, 언마운트 시 제거
+  // 페이지 변경 감지하여 메뉴 상태 초기화
+  useEffect(() => {
+    if (showMenu) {
+      setShowMenu(false);
+      lenisRef.current?.start();
+      document.body.style.overflow = "";
+    }
+  }, [location.pathname]); // location.pathname이 변경될 때마다 실행
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -45,7 +50,7 @@ const Header = () => {
     };
   }, [lastScrollY]);
 
-  // 메뉴 열 때 스크롤 정지
+  // 메뉴 상태에 따른 스크롤 제어
   useEffect(() => {
     if (showMenu) {
       lenisRef.current?.stop();
@@ -55,6 +60,15 @@ const Header = () => {
       document.body.style.overflow = "";
     }
   }, [showMenu, lenisRef]);
+
+  // cleanup 함수 추가
+  useEffect(() => {
+    return () => {
+      // 컴포넌트 언마운트 시 스크롤 상태 복원
+      document.body.style.overflow = "";
+      lenisRef.current?.start();
+    };
+  }, []);
 
   return (
     <>
@@ -120,7 +134,7 @@ const Header = () => {
               <li>
                 <Link
                   to="/work/kwangjuBank"
-                  abel="Kwangju Bank - 스마트뱅킹 프로젝트"
+                  aria-label="Kwangju Bank - 스마트뱅킹 프로젝트"
                 >
                   <span>KWANGJU BANK</span>
                   <span className={styles.focus}>스마트뱅킹</span>

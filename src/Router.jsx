@@ -4,7 +4,6 @@
 
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { ScrollTop } from "./components";
 
 // 인트로 화면
 import Intro from "./components/Intro";
@@ -12,16 +11,16 @@ import Intro from "./components/Intro";
 import Home from "./pages/Home";
 // 서브 페이지
 import KoreanAir from "./pages/KoreanAir";
+import SKEcoplant from "./pages/SKEcoplant";
 
 function CommonRouter() {
   return (
     <>
-      {/* 페이지 전환 시 스크롤 항상 위로 가게 */}
-      <ScrollTop />
       <Routes>
         <Route path="/intro" element={<Intro />} />
         <Route path="/" element={<Home />} />
         <Route path="/work/koreanair" element={<KoreanAir />} />
+        <Route path="/work/skEcoplant" element={<SKEcoplant />} />
       </Routes>
     </>
   );

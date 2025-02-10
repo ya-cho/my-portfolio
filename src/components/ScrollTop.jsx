@@ -1,19 +1,31 @@
-// 페이지 이동 시 스크롤을 맨 위로 이동시키는 컴포넌트
+// ScrollTop.jsx
 
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
-export default function ScrollTop() {
+export default function ScrollToTop() {
   const { pathname } = useLocation();
+  const prevPathRef = useRef(pathname);
 
   useEffect(() => {
-    // 페이지 변경 시 스크롤을 맨 위로 이동
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "instant", // 즉시 이동. 'smooth'로 변경하면 부드럽게 이동
-    });
-  }, [pathname]); // pathname이 변경될 때마다 실행
+    if (prevPathRef.current !== pathname) {
+      // DOM이 업데이트되기 전에 현재 스크롤 위치를 저장
+      const prevScroll = window.scrollY;
+
+      // 즉시 스크롤 맨 위로
+      document.documentElement.style.scrollBehavior = "auto";
+      window.scrollTo(0, 0);
+
+      // 약간의 지연 후 다시 한번 스크롤 맨 위로 (DOM 업데이트 이후를 보장)
+      const timeoutId = requestAnimationFrame(() => {
+        window.scrollTo(0, 0);
+        document.documentElement.style.scrollBehavior = "";
+      });
+
+      prevPathRef.current = pathname;
+      return () => cancelAnimationFrame(timeoutId);
+    }
+  }, [pathname]);
 
   return null;
 }

@@ -1,14 +1,14 @@
 /**
- * KoreanAir.jsx
+ * SKEcoplant.jsx
  * © 2025 yoona. All rights reserved.
  */
 
 import DetailView from "../components/DetailView";
 
-export default function KoreanAir() {
+export default function SKEcoplant() {
   // 전달할 데이터
   const data = {
-    bgTitle: "대한항공<br />인공지능 컨텍센터 구축",
+    bgTitle: "SK에코플랜트<br />폐기물 디지털 관리<br />서비스 구축",
     contentTitle: "대한항공 인공지능 컨텍센터 구축",
     period: "2024.08 ~ 2024.10",
     tech: "React, HTML, SCSS, Javascript, Cloudscape",
@@ -20,7 +20,7 @@ export default function KoreanAir() {
   };
   return (
     <>
-      <DetailView {...data} className="koreanair" />
+      <DetailView {...data} className="sk-ecoplant" />
     </>
   );
 }
