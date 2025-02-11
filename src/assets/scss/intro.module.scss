@@ -8,6 +8,7 @@
   @include flexbox(center, center);
   flex-direction: column;
   height: calc(var(--vh) * 100);
+  min-height: calc(var(--vh) * 100);
   background: $bg-gray;
   @include tablet {
     margin: 0 2rem;

@@ -9,6 +9,7 @@
   padding: 7.2rem 10rem 3.2rem 10rem;
   position: relative;
   overflow: hidden;
+  min-height: calc(var(--vh) * 100);
   height: calc(var(--vh) * 100);
   @include laptop {
     &::before {
@@ -287,8 +288,9 @@
           }
           .title {
             margin: 1.6rem 0 0.8rem;
+            line-height: 1.3;
             @include laptop {
-              margin: 1.2rem 0 0;
+              margin: 1.2rem 0 0.4rem;
             }
           }
           .tags {

@@ -19,7 +19,7 @@ export default function Main() {
   const [position, setPosition] = useState({ x: initialX, y: initialY });
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef(null);
-  const words = ["UI/UX", "Web", "Creative"];
+  const words = ["UIUX", "Web", "Creative"];
 
   // Circle 애니메이션
   const isFirstMount = useRef(true);
