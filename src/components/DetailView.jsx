@@ -23,7 +23,7 @@ export default function DetailView({
   const currentPage = location.pathname.split("/").pop();
   // 가능한 페이지들의 순서 배열
   const pageOrder = [
-    "koreanair",
+    "koreanAir",
     "skEcoplant",
     "kwangjuBank",
     "cjFreshway",
