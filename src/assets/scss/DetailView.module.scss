@@ -24,22 +24,58 @@
       background-position: center;
       background-size: cover;
       overflow: hidden;
+      @include tablet {
+        align-items: flex-start;
+      }
       .bg-title {
         font-size: clamp(36px, 8vw, 10rem);
         font-weight: 700;
+        letter-spacing: -1px;
+        @include tablet {
+          padding-top: 40%;
+        }
       }
     }
   }
   &.koreanair .bg {
     background-image: url("./../images/work_bg_koreanair.png");
-    background-position: right;
+    @include tablet {
+      background-image: url("./../images/work_bg_koreanair_m.png");
+    }
   }
-  &.sk-ecoplant {
+  &.sk-ecoplant .bg {
+    background-image: url("./../images/work_bg_sk.png");
+    @include tablet {
+      background-image: url("./../images/work_bg_sk_m.png");
+    }
+  }
+  &.kwangju .bg {
+    background-image: url("./../images/work_bg_kwangju.png");
+    @include tablet {
+      background-image: url("./../images/work_bg_kwangju_m.png");
+    }
+  }
+  &.cj .bg {
+    background-image: url("./../images/work_bg_cj.png");
+    @include tablet {
+      background-image: url("./../images/work_bg_cj_m.png");
+    }
+  }
+  &.fintech {
     .bg-title {
-      color: #227df4;
+      color: $white;
     }
     .bg {
-      background-image: url("./../images/work_bg_sk.png");
+      background-image: url("./../images/work_bg_fintech.png");
+      @include tablet {
+        background-image: url("./../images/work_bg_fintech_m.png");
+      }
+    }
+  }
+  &.payapp .bg {
+    background-image: url("./../images/work_bg_payapp.png");
+    @include tablet {
+      background-image: url("./../images/work_bg_payapp_m.png");
     }
   }
   .text {
@@ -91,5 +127,20 @@
     background: $bg-gray;
     color: $gray-999;
     font-size: 1.2rem;
+  }
+  .bottom {
+    padding-bottom: 10rem;
+    @include tablet {
+      padding: 0 2.4rem 3rem;
+    }
+    .page-nav {
+      margin: 0 auto;
+      max-width: 1000px;
+      display: flex;
+      gap: 4rem;
+      .disabled {
+        opacity: 0.3;
+      }
+    }
   }
 }

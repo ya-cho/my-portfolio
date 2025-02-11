@@ -1,7 +1,7 @@
 // DetailView.jsx
 // works 서브 화면 공통 컴포넌트
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import styles from "./../assets/scss/DetailView.module.scss";
 
@@ -14,9 +14,34 @@ export default function DetailView({
   role, // 역할 및 기여도
   overview, // 설명글
   images, // 이미지 배열 (src, alt)
-  guide,
+  guide, // 가이드 문구
 }) {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // pathname에서 현재 페이지 이름 추출 (work/koreanAir 형식에서)
+  const currentPage = location.pathname.split("/").pop();
+  // 가능한 페이지들의 순서 배열
+  const pageOrder = [
+    "koreanair",
+    "skEcoplant",
+    "kwangjuBank",
+    "cjFreshway",
+    "fintech",
+    "payapp",
+  ];
+  const currentIndex = pageOrder.indexOf(currentPage);
+  // 페이지 네비게이션
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      navigate(`/work/${pageOrder[currentIndex - 1]}`);
+    }
+  };
+  const handleNext = () => {
+    if (currentIndex < pageOrder.length - 1) {
+      navigate(`/work/${pageOrder[currentIndex + 1]}`);
+    }
+  };
 
   return (
     <>
@@ -62,14 +87,38 @@ export default function DetailView({
               ))}
           </div>
         </section>
-        {guide && guide.length > 0 ? (
+
+        <section className={styles.bottom}>
+          <nav className={styles["page-nav"]}>
+            <button
+              onClick={handlePrev}
+              disabled={currentIndex === 0}
+              className={`${currentIndex === 0 ? styles.disabled : ""}`}
+            >
+              <span>← Prev</span>
+            </button>
+
+            <button
+              onClick={handleNext}
+              disabled={currentIndex === pageOrder.length - 1}
+              className={`${
+                currentIndex === pageOrder.length - 1 ? styles.disabled : ""
+              }`}
+            >
+              <span>Next →</span>
+            </button>
+          </nav>
+        </section>
+
+        {/* TODO : 가이드 문구 있을 때 추가 */}
+        {/* {guide && guide.length > 0 ? (
           <p className={styles.guide}>{guide}</p>
         ) : (
           ""
-        )}
+        )} */}
       </section>
       {/* 뒤로가기 버튼 (공통) */}
-      <button type="button" onClick={() => navigate(-1)} className="btn-back">
+      <button type="button" onClick={() => navigate("/")} className="btn-back">
         <span className="blind">뒤로가기</span>
       </button>
     </>
