@@ -131,7 +131,7 @@
   .bottom {
     padding-bottom: 10rem;
     @include tablet {
-      padding: 0 2.4rem 3rem;
+      padding: 0 2.4rem 6rem;
     }
     .page-nav {
       margin: 0 auto;
@@ -140,6 +140,10 @@
       gap: 4rem;
       .disabled {
         opacity: 0.3;
+      }
+      button {
+        font-size: 14px;
+        padding: 0.8rem;
       }
     }
   }

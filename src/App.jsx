@@ -6,9 +6,8 @@
 import React, { useEffect } from "react";
 import "./assets/scss/global.scss";
 import CommonRouter from "./Router"; // Router를 CommonRouter로 바꿔서 import
-import { LenisProvider } from "./context/LenisContext";
 import { CursorProvider } from "./context/CursorContext";
-import { CustomCursor, ScrollTop } from "./components";
+import { CustomCursor } from "./components";
 import { TopButton } from "./components/elements";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -36,19 +35,15 @@ function App() {
 
   return (
     <>
-      {/* 페이지 이동시에도 스크롤 항상 위로 가게 */}
-      <ScrollTop />
       {/* 스크롤탑 버튼 */}
       <TopButton />
-      <LenisProvider>
-        {/* 메인 circle 객체 커서 위치 데이터를 공유하기 위해 CursorProvider 추가 */}
-        <CursorProvider>
-          <div className="app">
-            <CustomCursor />
-            <CommonRouter /> {/* 라우터 부분만 CommonRouter로 변경 */}
-          </div>
-        </CursorProvider>
-      </LenisProvider>
+      {/* 메인 circle 객체 커서 위치 데이터를 공유하기 위해 CursorProvider 추가 */}
+      <CursorProvider>
+        <div className="app">
+          <CustomCursor />
+          <CommonRouter /> {/* 라우터 부분만 CommonRouter로 변경 */}
+        </div>
+      </CursorProvider>
     </>
   );
 }

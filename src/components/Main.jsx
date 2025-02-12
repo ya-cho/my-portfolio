@@ -346,7 +346,7 @@ export default function Main() {
                   <li>#scss</li>
                   <li>#javscript</li>
                 </ul>
-                <Button to="/work/koreanair" className="btn-round-large">
+                <Button to="/work/koreanAir" className="btn-round-large">
                   View
                 </Button>
               </div>
