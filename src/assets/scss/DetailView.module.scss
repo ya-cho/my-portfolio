@@ -137,13 +137,23 @@
       margin: 0 auto;
       max-width: 1000px;
       display: flex;
-      gap: 4rem;
-      .disabled {
-        opacity: 0.3;
-      }
+      gap: 2rem;
       button {
         font-size: 14px;
         padding: 0.8rem;
+        transition: transform 0.3s;
+        &:first-of-type:hover {
+          transform: translateX(-20px);
+        }
+        &:last-of-type:hover {
+          transform: translateX(20px);
+        }
+      }
+      button.disabled {
+        opacity: 0.3;
+        &:hover {
+          transform: none;
+        }
       }
     }
   }
