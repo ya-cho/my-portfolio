@@ -8,28 +8,21 @@ import { Intro, Header, Footer, Main } from "../components";
 
 function Home() {
   const [showIntro, setShowIntro] = useState(true);
-
   const handleIntroComplete = () => {
     setShowIntro(false); // Intro 제거
   };
 
   return (
     <>
-      {/* {showIntro ? (
+      {showIntro ? (
         <Intro onComplete={handleIntroComplete} />
       ) : (
         <>
           <Header />
-
           <Main />
-
           <Footer />
         </>
-      )} */}
-
-      <Header />
-      <Main />
-      <Footer />
+      )}
     </>
   );
 }
