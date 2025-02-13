@@ -121,6 +121,14 @@
       }
     }
   }
+  .img {
+    padding-bottom: 10rem;
+    .img-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 10rem;
+    }
+  }
   .guide {
     padding: 2.4rem;
     position: relative;
@@ -136,7 +144,7 @@
     .page-nav {
       margin: 0 auto;
       max-width: 1000px;
-      display: flex;
+      @include flexbox(center, null);
       gap: 2rem;
       button {
         font-size: 14px;
