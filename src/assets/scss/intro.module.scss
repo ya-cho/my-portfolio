@@ -18,7 +18,7 @@
     background: url("./../images/object_intro.svg") no-repeat;
     background-size: 100%;
     @include tablet {
-      @include same-size(4rem);
+      @include same-size(2.8rem);
     }
   }
   .user-title {
