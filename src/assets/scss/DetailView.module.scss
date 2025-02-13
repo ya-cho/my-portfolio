@@ -38,27 +38,27 @@
     }
   }
   &.koreanair .bg {
-    background-image: url("./../images/work_bg_koreanair.png");
+    background-image: url("./../images/work_bg_koreanair.webp");
     @include tablet {
-      background-image: url("./../images/work_bg_koreanair_m.png");
+      background-image: url("./../images/work_bg_koreanair_m.webp");
     }
   }
   &.sk-ecoplant .bg {
-    background-image: url("./../images/work_bg_sk.png");
+    background-image: url("./../images/work_bg_sk.webp");
     @include tablet {
-      background-image: url("./../images/work_bg_sk_m.png");
+      background-image: url("./../images/work_bg_sk_m.webp");
     }
   }
   &.kwangju .bg {
-    background-image: url("./../images/work_bg_kwangju.png");
+    background-image: url("./../images/work_bg_kwangju.webp");
     @include tablet {
-      background-image: url("./../images/work_bg_kwangju_m.png");
+      background-image: url("./../images/work_bg_kwangju_m.webp");
     }
   }
   &.cj .bg {
-    background-image: url("./../images/work_bg_cj.png");
+    background-image: url("./../images/work_bg_cj.webp");
     @include tablet {
-      background-image: url("./../images/work_bg_cj_m.png");
+      background-image: url("./../images/work_bg_cj_m.webp");
     }
   }
   &.fintech {
@@ -66,16 +66,16 @@
       color: $white;
     }
     .bg {
-      background-image: url("./../images/work_bg_fintech.png");
+      background-image: url("./../images/work_bg_fintech.webp");
       @include tablet {
-        background-image: url("./../images/work_bg_fintech_m.png");
+        background-image: url("./../images/work_bg_fintech_m.webp");
       }
     }
   }
   &.payapp .bg {
-    background-image: url("./../images/work_bg_payapp.png");
+    background-image: url("./../images/work_bg_payapp.webp");
     @include tablet {
-      background-image: url("./../images/work_bg_payapp_m.png");
+      background-image: url("./../images/work_bg_payapp_m.webp");
     }
   }
   .text {

@@ -328,7 +328,7 @@ export default function Main() {
             <div className="item">
               <div className="img">
                 <img
-                  src="/images/img_koreanair_thumbnail.png"
+                  src="/images/img_koreanair_thumbnail.webp"
                   alt="대한항공 AICC AGENT WEB 인공지능 센터 구축"
                 />
               </div>
@@ -354,7 +354,7 @@ export default function Main() {
             <div className="item">
               <div className="img">
                 <img
-                  src="/images/img_sk_thumbnail.png"
+                  src="/images/img_sk_thumbnail.webp"
                   alt="SK 에코플랜트 Wayble Circular EPR 구축"
                 />
               </div>
@@ -379,7 +379,7 @@ export default function Main() {
             <div className="item">
               <div className="img">
                 <img
-                  src="/images/img_gwangju_thumbnail.png"
+                  src="/images/img_gwangju_thumbnail.webp"
                   alt="광주은행 스마트뱅킹 앱 고도화"
                 />
               </div>
@@ -403,7 +403,7 @@ export default function Main() {
             <div className="item">
               <div className="img">
                 <img
-                  src="/images/img_cj_thumbnail.png"
+                  src="/images/img_cj_thumbnail.webp"
                   alt="CJ 프레시웨이 FS MENU 구축"
                 />
               </div>
@@ -428,7 +428,7 @@ export default function Main() {
             <div className="item">
               <div className="img">
                 <img
-                  src="/images/img_fintech_thumbnail.png"
+                  src="/images/img_fintech_thumbnail.webp"
                   alt="핀테크 마이데이터 모니 하이브리드 앱 구축"
                 />
               </div>
@@ -453,7 +453,7 @@ export default function Main() {
             <div className="item">
               <div className="img">
                 <img
-                  src="/images/img_payapp_thumbnail.png"
+                  src="/images/img_payapp_thumbnail.webp"
                   alt="결제솔루션 PAYAPP 홈페이지 제작"
                 />
               </div>
