@@ -88,6 +88,13 @@ export default function DetailView({
           </section>
         )}
 
+        {/* 가이드 문구 (공통) */}
+        {guide && guide.length > 0 ? (
+          <p className={styles.guide}>{guide}</p>
+        ) : (
+          ""
+        )}
+
         <section className={styles.bottom}>
           <nav className={styles["page-nav"]}>
             <button
@@ -109,13 +116,6 @@ export default function DetailView({
             </button>
           </nav>
         </section>
-
-        {/* 가이드 문구 (공통) */}
-        {guide && guide.length > 0 ? (
-          <p className={styles.guide}>{guide}</p>
-        ) : (
-          ""
-        )}
       </section>
       {/* 뒤로가기 버튼 (공통) */}
       <button type="button" onClick={() => navigate("/")} className="btn-back">

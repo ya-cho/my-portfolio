@@ -26,17 +26,17 @@
       overflow: hidden;
       @include tablet {
         align-items: flex-start;
+        padding-top: 12rem;
       }
       .bg-title {
-        font-size: clamp(36px, 8vw, 10rem);
+        font-size: clamp(36px, 8vw, 8.8rem);
         font-weight: 700;
         letter-spacing: -1px;
-        @include tablet {
-          padding-top: 12rem;
-        }
+        line-height: 1.4;
       }
     }
   }
+  // 각 화면별 배경 이미지
   &.koreanair .bg {
     background-image: url("./../images/work_bg_koreanair.webp");
     @include tablet {
@@ -49,15 +49,10 @@
       background-image: url("./../images/work_bg_sk_m.webp");
     }
   }
-  &.kwangju {
-    .bg-title {
-      color: $white;
-    }
-    .bg {
-      background-image: url("./../images/work_bg_kwangju.webp");
-      @include tablet {
-        background-image: url("./../images/work_bg_kwangju_m.webp");
-      }
+  &.kwangju .bg {
+    background-image: url("./../images/work_bg_kwangju.webp");
+    @include tablet {
+      background-image: url("./../images/work_bg_kwangju_m.webp");
     }
   }
   &.cj .bg {
@@ -83,6 +78,7 @@
       background-image: url("./../images/work_bg_payapp_m.webp");
     }
   }
+  // 텍스트 영역
   .text {
     padding: 13.6rem 0;
     @include tablet {
@@ -126,6 +122,7 @@
       }
     }
   }
+  // 이미지 영역
   .img {
     .img-wrapper {
       display: flex;
@@ -133,13 +130,18 @@
       gap: 2.8rem;
     }
   }
+  // 가이드 문구
   .guide {
     padding: 2.4rem;
     position: relative;
     background: $bg-gray;
     color: $gray-999;
     font-size: 1.2rem;
+    @include tablet {
+      padding: 1.6rem 2.4rem;
+    }
   }
+  // 페이지 네비게이션 버튼
   .bottom {
     padding: 4rem 0 10rem;
     @include tablet {
@@ -155,11 +157,15 @@
       }
       button {
         font-size: 14px;
-        padding: 0.8rem 1.2rem;
+        padding: 1.2rem 2.4rem;
         @include bordered(1px, $black);
-        @include radius(2rem);
+        @include radius(3rem);
         transition: transform 0.3s;
+        span {
+          font-weight: 700;
+        }
         @include tablet {
+          padding: 1.2rem;
           flex: 1;
         }
         &:last-of-type {
@@ -183,8 +189,6 @@
         opacity: 0.3;
         &:hover {
           transform: none;
-          background: transparent;
-          color: inherit;
         }
       }
     }
