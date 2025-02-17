@@ -1,4 +1,5 @@
 // CustomCursor.jsx
+
 import React, { useEffect, useState } from "react";
 import { useCursor } from "./../context/CursorContext";
 
@@ -7,48 +8,39 @@ const CustomCursor = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [isFirstMove, setIsFirstMove] = useState(true);
+  const [cursorStyle, setCursorStyle] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    const handleMouseMove = (e) => {
-      if (isFirstMove) {
-        setIsFirstMove(false);
-        setIsVisible(true);
-      }
+    const updateCursor = (e) => {
       setCursorPosition({ x: e.clientX, y: e.clientY });
     };
 
+    const handleMouseMove = (e) => {
+      setIsVisible(true);
+      updateCursor(e);
+    };
+
     const handleMouseOver = (e) => {
-      if (isFirstMove) {
-        setIsFirstMove(false);
-        setIsVisible(true);
-      }
       if (e.target.getAttribute("data-hoverable") === "true") {
         setIsHovered(true);
       }
-      setCursorPosition({ x: e.clientX, y: e.clientY });
+      updateCursor(e);
     };
 
     const handleMouseOut = (e) => {
       if (e.target.getAttribute("data-hoverable") === "true") {
         setIsHovered(false);
       }
-      setCursorPosition({ x: e.clientX, y: e.clientY });
+      updateCursor(e);
     };
 
-    const handleMouseLeave = () => {
-      setIsVisible(false);
-    };
-
+    const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = (e) => {
-      if (isFirstMove) {
-        setIsFirstMove(false);
-      }
-      setCursorPosition({ x: e.clientX, y: e.clientY });
+      updateCursor(e);
       setIsVisible(true);
     };
 
@@ -67,7 +59,21 @@ const CustomCursor = () => {
       document.removeEventListener("mouseleave", handleMouseLeave);
       document.removeEventListener("mouseenter", handleMouseEnter);
     };
-  }, [setCursorPosition, isFirstMove]);
+  }, [setCursorPosition]);
+
+  useEffect(() => {
+    let animationFrame;
+    const updatePosition = () => {
+      setCursorStyle((prev) => ({
+        x: prev.x + (cursorPosition.x - prev.x) * 0.2, // 부드러운 이동
+        y: prev.y + (cursorPosition.y - prev.y) * 0.2,
+      }));
+      animationFrame = requestAnimationFrame(updatePosition);
+    };
+
+    animationFrame = requestAnimationFrame(updatePosition);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [cursorPosition]);
 
   if (isMobile) return null;
 
@@ -87,7 +93,7 @@ const CustomCursor = () => {
         pointerEvents: "none",
         zIndex: 9999,
         transition: "scale 0.3s ease, background-color 0.3s ease",
-        mixBlendMode: "exclusion",
+        mixBlendMode: "difference",
         opacity: isVisible ? 1 : 0,
       }}
     />

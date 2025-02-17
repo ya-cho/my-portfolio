@@ -15,6 +15,12 @@ export default function CjFreshway() {
     role: "Front, Back Office 50% 구축",
     overview:
       "CJ 프레시웨이 FS 메뉴 프로젝트는 단체 급식(Food Service, FS)을 운영하는 CJ 프레시웨이의 식단 관리 시스템을 개선하는 프로젝트입니다.<br />FS 메뉴 프로젝트는 프론트오피스와 백오피스, 두 가지 영역으로 나누어 진행되었습니다. <br />짧은 기간 내에 많은 작업을 수행해야 했기에 일정 관리와 효율적인 퍼블리싱 전략이 중요한 과제였습니다.<br />초기에 퍼블리싱 공통 가이드를 철저히 정리하고 적용함으로써, 작업의 일관성을 유지하고 <br />개발 및 디자인 팀과의 협업을 원활하게 진행할 수 있었습니다. 이를 통해 반복 작업을 최소화하고, 빠른 속도로 페이지를 완성할 수 있었습니다.",
+    images: [
+      { src: "/images/img_cj_landing1.webp", alt: "" },
+      { src: "/images/img_cj_landing2.webp", alt: "" },
+      { src: "/images/img_cj_landing3.webp", alt: "" },
+    ],
+    guide: "본 화면 이미지 출처는 암펠 공식 홈페이지에서 제공된 자료입니다.",
   };
   return (
     <>

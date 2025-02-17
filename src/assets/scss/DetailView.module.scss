@@ -32,7 +32,7 @@
         font-weight: 700;
         letter-spacing: -1px;
         @include tablet {
-          padding-top: 40%;
+          padding-top: 12rem;
         }
       }
     }
@@ -49,10 +49,15 @@
       background-image: url("./../images/work_bg_sk_m.webp");
     }
   }
-  &.kwangju .bg {
-    background-image: url("./../images/work_bg_kwangju.webp");
-    @include tablet {
-      background-image: url("./../images/work_bg_kwangju_m.webp");
+  &.kwangju {
+    .bg-title {
+      color: $white;
+    }
+    .bg {
+      background-image: url("./../images/work_bg_kwangju.webp");
+      @include tablet {
+        background-image: url("./../images/work_bg_kwangju_m.webp");
+      }
     }
   }
   &.cj .bg {
@@ -122,11 +127,10 @@
     }
   }
   .img {
-    padding-bottom: 10rem;
     .img-wrapper {
       display: flex;
       flex-direction: column;
-      gap: 10rem;
+      gap: 2.8rem;
     }
   }
   .guide {
@@ -137,30 +141,50 @@
     font-size: 1.2rem;
   }
   .bottom {
-    padding-bottom: 10rem;
+    padding: 4rem 0 10rem;
     @include tablet {
-      padding: 0 2.4rem 6rem;
+      padding: 4rem 0 6rem;
     }
     .page-nav {
       margin: 0 auto;
       max-width: 1000px;
       @include flexbox(center, null);
-      gap: 2rem;
+      gap: 1.2rem;
+      @include tablet {
+        padding: 0 2.4rem;
+      }
       button {
         font-size: 14px;
-        padding: 0.8rem;
+        padding: 0.8rem 1.2rem;
+        @include bordered(1px, $black);
+        @include radius(2rem);
         transition: transform 0.3s;
+        @include tablet {
+          flex: 1;
+        }
+        &:last-of-type {
+          background: $black;
+          color: $white;
+        }
         &:first-of-type:hover {
           transform: translateX(-20px);
+          @include tablet {
+            transform: none;
+          }
         }
         &:last-of-type:hover {
           transform: translateX(20px);
+          @include tablet {
+            transform: none;
+          }
         }
       }
       button.disabled {
         opacity: 0.3;
         &:hover {
           transform: none;
+          background: transparent;
+          color: inherit;
         }
       }
     }

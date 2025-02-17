@@ -78,15 +78,15 @@ export default function DetailView({
             </dl>
           </div>
         </section>
-        <section className={styles.img}>
-          <div className={styles["img-wrapper"]}>
-            {images &&
-              images.length > 0 &&
-              images.map((image, i) => (
+        {images && images.length > 0 && (
+          <section className={styles.img}>
+            <div className={styles["img-wrapper"]}>
+              {images.map((image, i) => (
                 <img key={i} src={image.src} alt={image.alt} />
               ))}
-          </div>
-        </section>
+            </div>
+          </section>
+        )}
 
         <section className={styles.bottom}>
           <nav className={styles["page-nav"]}>
@@ -110,12 +110,12 @@ export default function DetailView({
           </nav>
         </section>
 
-        {/* TODO : 가이드 문구 있을 때 추가 */}
-        {/* {guide && guide.length > 0 ? (
+        {/* 가이드 문구 (공통) */}
+        {guide && guide.length > 0 ? (
           <p className={styles.guide}>{guide}</p>
         ) : (
           ""
-        )} */}
+        )}
       </section>
       {/* 뒤로가기 버튼 (공통) */}
       <button type="button" onClick={() => navigate("/")} className="btn-back">
