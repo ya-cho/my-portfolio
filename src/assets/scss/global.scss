@@ -27,6 +27,28 @@
   font-weight: 900;
   src: local("Pretendard"), url("/fonts/Pretendard-Black.woff2") format("woff2");
 }
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 900;
+  src: local("Pretendard"), url("/fonts/Pretendard-Black.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 400;
+  src: local("Montserrat"),
+    url("/fonts/Montserrat-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 500;
+  src: local("Montserrat"),
+    url("/fonts/Montserrat-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 700;
+  src: local("Montserrat"), url("/fonts/Montserrat-Bold.woff2") format("woff2");
+}
 
 :root {
   font-size: 62.5%;

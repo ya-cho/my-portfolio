@@ -8,62 +8,77 @@ import { gsap } from "gsap";
 import styles from "./../assets/scss/Intro.module.scss";
 
 export default function Intro({ onComplete }) {
-  const objRef = useRef(null); // 오브젝트
-  const textRef = useRef(null); // 텍스트
-  const containerRef = useRef(null); // 전체 컨테이너
+  const textRef = useRef(null);
+  const containerRef = useRef(null);
+  const lineRef = useRef(null);
 
   useEffect(() => {
-    // sessionStorage에서 'hasSeenIntro' 값을 체크하여 첫 방문 여부 확인
-    const hasSeenIntro = sessionStorage.getItem("hasSeenIntro");
+    const text = textRef.current;
+    const line = lineRef.current;
+    const mm = gsap.matchMedia(); // matchMedia 설정
+    const tl = gsap.timeline();
 
-    if (!hasSeenIntro) {
-      const text = textRef.current;
-      const obj = objRef.current;
+    // 초기 위치 설정
+    gsap.set(text, {
+      x: "-44%",
+      y: "-50%",
+    });
 
-      if (text && obj) {
-        const distance = text.offsetWidth - obj.offsetWidth;
+    // 라인 초기 설정
+    gsap.set(line, {
+      width: 0,
+    });
 
-        const tween = gsap.to(obj, {
-          duration: 2,
-          x: distance,
-          rotation: 360,
-          ease: "none",
-          paused: true,
-        });
+    // 미디어쿼리에 따라 다른 애니메이션 적용
+    mm.add(
+      {
+        isMobile: "(max-width: 768px)", // 모바일 조건
+        isDesktop: "(min-width: 769px)", // 데스크탑 조건
+      },
+      (context) => {
+        const { isMobile } = context.conditions;
 
-        tween.play();
+        // 애니메이션 시퀀스 (모바일 & 데스크탑 분리)
+        tl.to(text, {
+          x: isMobile ? "-80%" : "-60%", // 모바일이면 -80%, 아니면 -60%
+          duration: 3,
+          ease: "linear",
+        })
+          .to(
+            line,
+            {
+              width: "100%",
+              duration: 3,
+              ease: "linear",
+            },
+            "<"
+          )
+          .set(line, { opacity: 0 }) // 라인 즉시 숨김
+          .to(containerRef.current, {
+            opacity: 0,
+            y: "-100vh",
+            duration: 1,
+            ease: "linear",
+            onComplete: () => {
+              if (onComplete) onComplete();
+            },
+          });
       }
+    );
 
-      // fade out
-      const timer = setTimeout(() => {
-        gsap.to(containerRef.current, {
-          opacity: 0,
-          y: "-100vh",
-          duration: 1,
-          ease: "power2.out",
-          onComplete: () => {
-            if (onComplete) onComplete();
-            // 인트로가 끝난 후, 'hasSeenIntro' 값을 sessionStorage에 저장
-            sessionStorage.setItem("hasSeenIntro", "true");
-          },
-        });
-      }, 3000);
-
-      // clean
-      return () => clearTimeout(timer);
-    } else {
-      // 인트로 이미 재생한 경우 메인으로 바로 이동
-      if (onComplete) onComplete();
-    }
+    return () => {
+      tl.kill();
+      mm.revert(); // matchMedia 해제
+    };
   }, [onComplete]);
 
   return (
-    <section ref={containerRef} className={styles.intro}>
+    <section className={styles.intro} ref={containerRef}>
       <div className={styles["intro-container"]}>
-        <div ref={objRef} className={styles.object}></div>
-        <h2 ref={textRef} className={styles["user-title"]}>
-          Yoona's Creative Works
+        <h2 className={styles["user-title"]} ref={textRef}>
+          Yoona's Creative<span className={styles.object}></span>Works
         </h2>
+        <div className={styles.line} ref={lineRef}></div>
       </div>
     </section>
   );

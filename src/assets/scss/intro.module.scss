@@ -2,40 +2,40 @@
 
 @use "./mixin.scss" as *;
 @use "./variable.scss" as *;
+@use "./app.scss" as *;
 
 .intro {
-  margin: 0 4rem;
   @include flexbox(center, center);
   flex-direction: column;
   height: calc(var(--vh) * 100);
   min-height: calc(var(--vh) * 100);
   background: $bg-gray;
-  @include tablet {
-    margin: 0 2rem;
-  }
-  .object {
-    @include same-size(7.2rem);
-    background: url("./../images/object_intro.svg") no-repeat;
-    background-size: 100%;
-    @include tablet {
-      @include same-size(2.8rem);
-    }
-  }
+  overflow: hidden;
+  position: relative;
   .user-title {
-    margin-top: 2rem;
-    display: inline-block;
-    outline: none;
-    background: $black;
-    color: $bg-gray;
-    border-radius: 10rem;
-    padding: 1.2rem 2.8rem;
+    @include flexbox(null, center);
+    gap: 1rem;
+    color: $primary;
     text-transform: uppercase;
-    font-size: clamp(16px, 6vw, 6rem);
-    font-weight: 700;
-    line-height: 1;
-    @include tablet {
-      padding: 1.2rem;
-      margin-top: 1.2rem;
+    font-size: clamp(6rem, 8vw, 15rem);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    position: absolute;
+    white-space: nowrap;
+    top: 50%;
+    left: 50%;
+    .object {
+      display: block;
+      @include same-size(clamp(4rem, 5vw, 10rem));
+      background: url("./../images/object_intro.svg") no-repeat center / 100%;
+      animation: spinCircle 3s linear infinite;
     }
+  }
+  .line {
+    height: 4px;
+    background: $primary;
+    position: fixed;
+    top: 0;
+    left: 0;
   }
 }
