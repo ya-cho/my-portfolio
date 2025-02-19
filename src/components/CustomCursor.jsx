@@ -88,7 +88,7 @@ const CustomCursor = () => {
         transform: `translate(${cursorPosition.x - 10}px, ${
           cursorPosition.y - 10
         }px) ${isHovered ? "scale(2.4)" : "scale(1)"}`,
-        backgroundColor: isHovered ? "#fff" : "#0057ff",
+        backgroundColor: isHovered ? "#fff" : "#FFC73A",
         borderRadius: "50%",
         pointerEvents: "none",
         zIndex: 9999,

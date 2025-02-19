@@ -27,7 +27,7 @@
   }
   .logo {
     display: block;
-    @include size(4.2rem, 3.4rem);
+    @include size(5.4rem, 3rem);
     background: url("./../images/logo_ya.svg") no-repeat center / 100%;
   }
   .menu-button::before {
