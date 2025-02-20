@@ -13,34 +13,38 @@ export default function Intro({ onComplete }) {
   const lineRef = useRef(null);
 
   useEffect(() => {
+    // 새 탭 방문 체크
+    const hasVisited = sessionStorage.getItem("hasVisitedBefore");
+
+    if (hasVisited) {
+      if (onComplete) onComplete();
+      return;
+    }
+
     const text = textRef.current;
     const line = lineRef.current;
-    const mm = gsap.matchMedia(); // matchMedia 설정
+    const mm = gsap.matchMedia();
     const tl = gsap.timeline();
 
-    // 초기 위치 설정
     gsap.set(text, {
       x: "-44%",
       y: "-50%",
     });
 
-    // 라인 초기 설정
     gsap.set(line, {
       width: 0,
     });
 
-    // 미디어쿼리에 따라 다른 애니메이션 적용
     mm.add(
       {
-        isMobile: "(max-width: 768px)", // 모바일 조건
-        isDesktop: "(min-width: 769px)", // 데스크탑 조건
+        isMobile: "(max-width: 768px)",
+        isDesktop: "(min-width: 769px)",
       },
       (context) => {
         const { isMobile } = context.conditions;
 
-        // 애니메이션 시퀀스 (모바일 & 데스크탑 분리)
         tl.to(text, {
-          x: isMobile ? "-80%" : "-60%", // 모바일이면 -80%, 아니면 -60%
+          x: isMobile ? "-80%" : "-60%",
           duration: 3,
           ease: "linear",
         })
@@ -55,11 +59,12 @@ export default function Intro({ onComplete }) {
           )
           .set(line, { opacity: 0 })
           .to(containerRef.current, {
-            // opacity: 0,
             y: "-100vh",
             duration: 1,
             ease: "linear",
             onComplete: () => {
+              // sessionStorage로 변경
+              sessionStorage.setItem("hasVisitedBefore", "true");
               if (onComplete) onComplete();
             },
           });
@@ -68,9 +73,13 @@ export default function Intro({ onComplete }) {
 
     return () => {
       tl.kill();
-      mm.revert(); // matchMedia 해제
+      mm.revert();
     };
   }, [onComplete]);
+
+  if (sessionStorage.getItem("hasVisitedBefore")) {
+    return null;
+  }
 
   return (
     <section className={styles.intro} ref={containerRef}>
