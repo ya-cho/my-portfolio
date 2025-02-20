@@ -18,6 +18,7 @@ export default function KoreanAir() {
     images: [
       { src: "/images/img_ka_landing1.webp", alt: "" },
       { src: "/images/img_ka_landing2.webp", alt: "" },
+      { src: "/images/img_ka_landing3.webp", alt: "" },
     ],
   };
   return (
