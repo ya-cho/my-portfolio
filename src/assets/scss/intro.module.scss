@@ -9,13 +9,13 @@
   flex-direction: column;
   height: calc(var(--vh) * 100);
   min-height: calc(var(--vh) * 100);
-  background: $bg-gray;
+  background: #f9f5ef;
   overflow: hidden;
   position: relative;
   .user-title {
     @include flexbox(null, center);
     gap: 1rem;
-    color: $primary;
+    color: $intro;
     text-transform: uppercase;
     font-size: clamp(6rem, 8vw, 15rem);
     font-family: "Montserrat", sans-serif;
@@ -26,14 +26,14 @@
     left: 50%;
     .object {
       display: block;
-      @include same-size(clamp(4rem, 5vw, 10rem));
+      @include same-size(clamp(4rem, 5vw, 12rem));
       background: url("./../images/object_intro.svg") no-repeat center / 100%;
       animation: spinCircle 3s linear infinite;
     }
   }
   .line {
     height: 4px;
-    background: $primary;
+    background: $intro;
     position: fixed;
     top: 0;
     left: 0;

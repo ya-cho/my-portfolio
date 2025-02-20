@@ -53,9 +53,9 @@ export default function Intro({ onComplete }) {
             },
             "<"
           )
-          .set(line, { opacity: 0 }) // 라인 즉시 숨김
+          .set(line, { opacity: 0 })
           .to(containerRef.current, {
-            opacity: 0,
+            // opacity: 0,
             y: "-100vh",
             duration: 1,
             ease: "linear",
