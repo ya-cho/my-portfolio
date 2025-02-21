@@ -83,16 +83,18 @@ const CustomCursor = () => {
         position: "fixed",
         left: 0,
         top: 0,
-        width: "2.4rem",
-        height: "2.4rem",
+        margin: isHovered ? "-1.8rem 0 0 -1.8rem" : "0",
+        width: isHovered ? "6rem" : "2.4rem",
+        height: isHovered ? "6rem" : "2.4rem",
         transform: `translate(${cursorPosition.x - 10}px, ${
           cursorPosition.y - 10
-        }px) ${isHovered ? "scale(2.4)" : "scale(1)"}`,
+        }px)`,
         backgroundColor: isHovered ? "#fff" : "#FFC73A",
         borderRadius: "50%",
         pointerEvents: "none",
         zIndex: 9999,
-        transition: "scale 0.3s ease, background-color 0.3s ease",
+        transition:
+          "width 0.3s ease, height 0.3s ease, background-color 0.3s ease",
         mixBlendMode: "difference",
         opacity: isVisible ? 1 : 0,
       }}
