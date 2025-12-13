@@ -1,6 +1,6 @@
 /**
  * Main.jsx
- * © 2025 yoona. All rights reserved.
+ * © yoona. All rights reserved.
  */
 
 import React, { useEffect, useState, useRef } from "react";
@@ -260,8 +260,8 @@ export default function Main() {
             <span>Publisher</span>
           </h2>
           <ul className="bottom-text">
-            <li>2025 PORTFOLIO</li>
             <li>Yoona</li>
+            <li>PORTFOLIO</li>
             <li>UIUX PUBLISHER</li>
           </ul>
         </div>
