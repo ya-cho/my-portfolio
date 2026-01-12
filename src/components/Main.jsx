@@ -311,8 +311,7 @@ export default function Main() {
                 <br />
                 예상치 못한 이슈가 발생했을 때에도 긍정적인 태도로
                 <br />
-                해결책을 모색하며, 보다 나은 방향으로 나아갈 수 있도록
-                노력합니다.
+                해결책을 모색하며 최선의 결과를 만들어냅니다.
               </p>
             </li>
           </ul>
@@ -325,6 +324,32 @@ export default function Main() {
         <div className="inner">
           <h3 className="section-title">My works</h3>
           <div className="work-item">
+            <div className="item">
+              <div className="img">
+                <img
+                  src="/images/img_koreanair_thumbnail.webp"
+                  alt="대한항공 AICC AGENT WEB 인공지능 센터 구축"
+                />
+              </div>
+              <div className="text">
+                <p className="project-name">대한항공 Agent Web</p>
+                <h4 className="title">
+                  대한항공 AICC AGENT WEB
+                  <br />
+                  인공지능 컨텍센터 구축
+                </h4>
+                <ul className="tags">
+                  <li>#react</li>
+                  <li>#cloudscape</li>
+                  <li>#html</li>
+                  <li>#scss</li>
+                  <li>#javscript</li>
+                </ul>
+                <Button to="/work/koreanAir" className="btn-round-large">
+                  View
+                </Button>
+              </div>
+            </div>
             <div className="item">
               <div className="img">
                 <img
