@@ -327,23 +327,21 @@ export default function Main() {
             <div className="item">
               <div className="img">
                 <img
-                  src="/images/img_koreanair_thumbnail.webp"
-                  alt="대한항공 AICC AGENT WEB 인공지능 센터 구축"
+                  src="/images/img_ibooja_thumbnail.webp"
+                  alt="하나은행 아이부자 자원봉사 구축"
                 />
               </div>
               <div className="text">
-                <p className="project-name">대한항공 Agent Web</p>
+                <p className="project-name">하나은행</p>
                 <h4 className="title">
-                  대한항공 AICC AGENT WEB
+                  하나은행 아이부자
                   <br />
-                  인공지능 컨텍센터 구축
+                  자원봉사 구축
                 </h4>
                 <ul className="tags">
                   <li>#react</li>
-                  <li>#cloudscape</li>
-                  <li>#html</li>
+                  <li>#typescript</li>
                   <li>#scss</li>
-                  <li>#javscript</li>
                 </ul>
                 <Button to="/work/koreanAir" className="btn-round-large">
                   View
