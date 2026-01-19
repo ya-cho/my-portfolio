@@ -343,7 +343,7 @@ export default function Main() {
                   <li>#typescript</li>
                   <li>#scss</li>
                 </ul>
-                <Button to="/work/koreanAir" className="btn-round-large">
+                <Button to="/work/ibooja" className="btn-round-large">
                   View
                 </Button>
               </div>

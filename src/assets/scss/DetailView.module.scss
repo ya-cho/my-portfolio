@@ -37,6 +37,17 @@
     }
   }
   // 각 화면별 배경 이미지
+  &.ibooja {
+    .bg-title {
+      color: $white;
+    }
+    .bg {
+      background-image: url("./../images/work_bg_ibooja.webp");
+      @include tablet {
+        background-image: url("./../images/work_bg_ibooja_m.webp");
+      }
+    }
+  }
   &.koreanair .bg {
     background-image: url("./../images/work_bg_koreanair.webp");
     @include tablet {

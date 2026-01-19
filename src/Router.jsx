@@ -10,6 +10,7 @@ import Intro from "./components/Intro";
 // 홈 화면
 import Home from "./pages/Home";
 // 작업물 페이지
+import Ibooja from "./pages/Ibooja"; // 아이부자
 import KoreanAir from "./pages/KoreanAir"; // 대한항공
 import SKEcoplant from "./pages/SKEcoplant"; // sk에코플랜트
 import KwangjuBank from "./pages/KwangjuBank"; // 광주은행
@@ -23,6 +24,7 @@ function CommonRouter() {
       <Routes>
         <Route path="/intro" element={<Intro />} />
         <Route path="/" element={<Home />} />
+        <Route path="/work/ibooja" element={<Ibooja />} />
         <Route path="/work/koreanair" element={<KoreanAir />} />
         <Route path="/work/skEcoplant" element={<SKEcoplant />} />
         <Route path="/work/kwangjuBank" element={<KwangjuBank />} />

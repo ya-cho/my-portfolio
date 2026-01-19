@@ -114,6 +114,12 @@ const Header = () => {
           >
             <ul>
               <li>
+                <Link to="/work/ibooja" aria-label="Ibooja - 아이부자 프로젝트">
+                  <span>IBOOJA</span>
+                  <span className={styles.focus}>하나은행 아이부자</span>
+                </Link>
+              </li>
+              <li>
                 <Link
                   to="/work/koreanAir"
                   aria-label="Korean Air - 인공지능 컨택센터 프로젝트"
@@ -158,7 +164,7 @@ const Header = () => {
                   <span className={styles.focus}>모니 하이브리드앱</span>
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   to="/work/payapp"
                   aria-label="PayApp - 페이앱 홈페이지 프로젝트"
@@ -166,7 +172,7 @@ const Header = () => {
                   <span>PAYAPP</span>
                   <span className={styles.focus}>페이앱 홈페이지</span>
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </nav>
           <p className={styles.copyright}>
